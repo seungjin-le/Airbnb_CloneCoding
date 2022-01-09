@@ -12,3 +12,6 @@ export const TextMiddle = styled.div`
 
     transform:translate(-50%,-50%);
 `;
+export const MarginBox = styled.div`
+  
+`

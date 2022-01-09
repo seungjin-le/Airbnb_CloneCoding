@@ -3,6 +3,7 @@ import IndexPage from "../pages"
 import HomePage from "../pages/home"
 import LoginPage from "../pages/login"
 import NoMatchPage from "../pages/noMatch"
+import MainPage from '../pages/home/mainPage'
 
 
 
@@ -13,7 +14,9 @@ const RootRoute = () => {
             <Switch>
 
                 {/* 기본 루트페이지 */}
-                <Route path='/' component={IndexPage} exact key="index" />
+              {/* <Route path='/' component={IndexPage} exact key="index" /> */}
+
+              <Route path='/' component={MainPage} exact key='mainPage'/>
 
                 {/* 추가되는 페이지 */}
                 <Route path='/home' component={HomePage} exact key="home" />
