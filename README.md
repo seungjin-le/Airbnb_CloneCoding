@@ -1,10 +1,12 @@
 # 개발일지
 
+#라이징테스트 Airbnb 클론코딩
+
 ## 2022-01-08 진행상황
 + MainPage 추가
 + index.HTML 수정
-  + Title
-  + Icon
+  + Title 변경
+  + Icon 변경
 
 ## 2022-01-09 진행상황
 + 

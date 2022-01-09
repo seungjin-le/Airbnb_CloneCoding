@@ -1,9 +1,8 @@
 import styled from 'styled-components'
+import Header from '../../components/common/header'
 
 const MainPage = () => {
-  return <div>
-    test
-  </div>;
+  return <Header />;
 }
 
 export default MainPage

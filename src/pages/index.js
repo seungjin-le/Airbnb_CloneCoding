@@ -7,7 +7,6 @@ const IndexPage = () => {
     return (
         <PageWrap>
             <Header page="index" />
-            <IndexText>컴공선배 리액트 템플릿 입니다.</IndexText>
         </PageWrap>
     )
 }

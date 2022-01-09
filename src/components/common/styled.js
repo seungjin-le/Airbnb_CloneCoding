@@ -12,6 +12,18 @@ export const TextMiddle = styled.div`
 
     transform:translate(-50%,-50%);
 `;
-export const MarginBox = styled.div`
+export const PaddingBox = styled.div`
+  width: 100%;
+  padding: 0 80px;
+  @media screen and (max-width: 950px) {
+    padding: 0 40px;
+  }
+  @media screen and (max-width: 744px) {
+    padding: 0 40px;
+  }
+  @media screen and (max-width: 375px) {
+    padding: 0 24px;
+  }
+  box-sizing: border-box;
   
 `
