@@ -15,9 +15,15 @@ const Header = () => {
             </LogoBox>
             <CenterBox>
               <CenterTextBox>
-                <CenterText>숙소</CenterText>
-                <CenterText>체험</CenterText>
-                <CenterText>온라인 체험</CenterText>
+                <LineBox>
+                  <CenterText>숙소</CenterText><UnderLine/>
+                </LineBox>
+                <LineBox>
+                  <CenterText>체험</CenterText><UnderLine/>
+                </LineBox>
+                <LineBox>
+                  <CenterText>온라인 체험</CenterText><UnderLine/>
+                </LineBox>
               </CenterTextBox>
             </CenterBox>
             <UserBox>
@@ -76,6 +82,32 @@ const CenterText = styled.div`
   font-weight: 400;
   padding: 10px 16px;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  }
+`
+const LineBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  &:hover span{
+    width: 5px;
+    
+  }
+  &:hover div {
+    color: rgba(200,200,200,.9 );
+  }
+`
+const UnderLine = styled.span`
+  box-sizing: border-box;
+  width: 0;
+  transition: .3s;
+  &:hover{
+    display: inline-block;
+  }
+  border-bottom: 2px solid #fff;
 `
 const UserBox = styled.div`
   flex: 1;

@@ -25,5 +25,4 @@ export const PaddingBox = styled.div`
     padding: 0 24px;
   }
   box-sizing: border-box;
-  
 `
