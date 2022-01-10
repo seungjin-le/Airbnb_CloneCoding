@@ -47,7 +47,6 @@ const Header = () => {
 const HeaderPaddingBox = styled.div`
   width: 100%;
   height: 80px;
-  background: #000;
 `
 const HeaderBox = styled(PaddingBox)`
   height: 100%;

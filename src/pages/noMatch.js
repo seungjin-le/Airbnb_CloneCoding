@@ -7,7 +7,7 @@ const NoMatchPage = () => {
     return (
         <div>
             <h3>
-                No Match for <code>{location.pathname}</code>
+                올바르지 못한 주소입니다 <code>{location.pathname}</code>
             </h3>
         </div>
     );
