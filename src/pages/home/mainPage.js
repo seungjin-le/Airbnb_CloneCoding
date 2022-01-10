@@ -4,6 +4,7 @@ import Covid19Msg from '../../components/common/covid19Msg'
 import SectionImg from '../../components/common/sectionImg'
 import {PageWrap} from '../../components/common/styled'
 import IdeaSection from '../../components/common/ideaSection'
+import Experience from '../../components/common/experience'
 
 const MainPage = () => {
   return (
@@ -13,9 +14,8 @@ const MainPage = () => {
         <Header />
         <SectionImg />
       </FirstSection>
-      <IdeaSection>
-
-      </IdeaSection>
+      <IdeaSection />
+      <Experience />
     </Page>
   );
 }

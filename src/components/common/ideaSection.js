@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import {PaddingBox} from './styled'
+import {PaddingBox, SectionTitle} from './styled'
 //<ItemImg style={{background:'url(https://a0.muscache.com/im/pictures/cc5716eb-7454-4ae4-890a-fdcaf6b724be.jpg?im_q=highq&im_w=720) no-repat center center fixed'}}></ItemImg>
 const IdeaSection = () => {
   return (
     <SectionBox>
       <Section>
-        <SectionTitle>설레는 다음 여행을 위한 아이디어</SectionTitle>
+        <Title>설레는 다음 여행을 위한 아이디어</Title>
         <RecommendationBox>
           <RecommendationItem>
             <ItemImg src='https://a0.muscache.com/im/pictures/cc5716eb-7454-4ae4-890a-fdcaf6b724be.jpg?im_q=highq&im_w=720' />
@@ -45,12 +45,7 @@ const SectionBox = styled.div`
 `
 const Section = styled(PaddingBox)`
 `
-const SectionTitle = styled.div`
-  font-size: 42px;
-  font-weight: 4
-  letter-spacing: -0.02em;
-  line-height: 47px;
-  padding-bottom: 48px;
+const Title = styled(SectionTitle)`
 `
 const RecommendationBox = styled.div`
   display: flex;
