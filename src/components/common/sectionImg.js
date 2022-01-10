@@ -18,8 +18,15 @@ const SectionImg = () => {
 }
 const SectionBox = styled.div`
   width: 100%;
+  height: 100%;
 `
 const ImgBox = styled(PaddingBox)`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `
 const Section = styled.div`
   background-image: url("https://a0.muscache.com/im/pictures/ce7d8ae6-977b-4031-b800-762ac4daf347.jpg?im_w=1920");
@@ -37,6 +44,8 @@ const BtnBox = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: end;
 `
 const BtnTitle = styled.div`
   color: #FFFFFF;
@@ -54,6 +63,7 @@ const Btn = styled.div`
   margin-top: 16px;
   font-size: 18px;
   border-radius: 45px;
+  cursor: pointer;
   @media screen and (max-width: 950px) {
     font-size: 17px;
   }
@@ -71,8 +81,11 @@ const Btn = styled.div`
   color: #222222;
   line-height: inherit;
   max-height: 120px;
-  // color: linear-gradient(90deg, #6F019C 0%, #C6017E 135.12%);
-  color: transparent(90deg, #6F019C 0%, #C6017E 135.12%);
+  & a{
+    background: linear-gradient(90deg, #6F019C 0%, #C6017E 135.12%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 `
 
 export default SectionImg;

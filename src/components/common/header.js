@@ -16,7 +16,7 @@ const Header = () => {
             <CenterBox>
               <CenterTextBox>
                 <LineBox>
-                  <CenterText>숙소</CenterText><UnderLine/>
+                  <CenterText>숙소</CenterText><UnderLine style={{width:'10px'}}/>
                 </LineBox>
                 <LineBox>
                   <CenterText>체험</CenterText><UnderLine/>
@@ -93,7 +93,6 @@ const LineBox = styled.div`
   cursor: pointer;
   &:hover span{
     width: 5px;
-    
   }
   &:hover div {
     color: rgba(200,200,200,.9 );
