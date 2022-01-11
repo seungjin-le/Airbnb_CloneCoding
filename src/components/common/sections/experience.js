@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {PaddingBox, SectionTitle} from './styled'
+import {PaddingBox, SectionTitle} from '../styled'
 
 const Experience = () => {
   return (
@@ -11,13 +11,11 @@ const Experience = () => {
             <SectionImg src='https://a0.muscache.com/im/pictures/c2adcb16-6c3f-4041-86a1-afa9c303c500.jpg?im_w=1200' />
               <SectionText>여행중 만나는<br/>이색적인 즐길 거리</SectionText>
               <SectionBtn>체험</SectionBtn>
-
           </SectionItem>
           <SectionItem>
             <SectionImg src='https://a0.muscache.com/im/pictures/c1bdf53f-2a19-4529-aa9b-1b0e6bd8d0ee.jpg?im_w=1200' />
               <SectionText>집에서 만나는<br/>다양한 즐길 거리</SectionText>
               <SectionBtn>온라인 체험</SectionBtn>
-
           </SectionItem>
         </SectionImgBox>
       </Section>

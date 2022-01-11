@@ -1,11 +1,12 @@
 import styled from 'styled-components'
-import Header from '../../components/common/header'
-import Covid19Msg from '../../components/common/covid19Msg'
-import SectionImg from '../../components/common/sectionImg'
+import Header from '../../components/common/header/header'
+import Covid19Msg from '../../components/common/header/covid19Msg'
+import SectionImg from '../../components/common/sections/sectionImg'
 import {PageWrap} from '../../components/common/styled'
-import IdeaSection from '../../components/common/ideaSection'
-import Experience from '../../components/common/experience'
-import HostingSection from '../../components/common/hostingSection'
+import IdeaSection from '../../components/common/sections/ideaSection'
+import Experience from '../../components/common/sections/experience'
+import HostingSection from '../../components/common/sections/hostingSection'
+import Footer from '../../components/common/footer/footer'
 
 const MainPage = () => {
   return (
@@ -16,12 +17,13 @@ const MainPage = () => {
         <SectionImg />
       </FirstSection>
       <IdeaSection />
-
+      <Experience />
       <HostingSection/>
+      <Footer />
     </Page>
   );
 }
-//<Experience />
+
 const Page = styled(PageWrap)`
   box-sizing: border-box;
 `

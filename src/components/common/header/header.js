@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom";
-import { PaddingBox } from "../../components/common/styled";
+import { PaddingBox } from "../styled";
 import {AiOutlineMenu} from 'react-icons/ai'
 const Header = () => {
     return (

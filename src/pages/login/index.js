@@ -1,5 +1,5 @@
 import { PageWrap } from "../../components/common/styled"
-import Header from "../../components/common/header"
+import Header from "../../components/common/header/header"
 import styled from "styled-components"
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
