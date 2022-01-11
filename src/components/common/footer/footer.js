@@ -17,7 +17,6 @@ const Footer = () => {
       Text:['뉴스룸','새로운 기능에 대해 알아보기','에어비앤비 공동창업자의 메시지','채용정보','투자자 정보','에어비앤비 Luxe']
     }
   ]
-  //console.log(footerTopList[1].Text)
   return (
     <FooterBox>
       <FooterPaddingBox>
@@ -25,41 +24,49 @@ const Footer = () => {
           <FooterTopListItemBox>
             <FooterTopListItem>
               <ItemTitle>에어비앤비 지원</ItemTitle>
-              {
-                footerTopList[0].Text.map((v,i) => (
-                  <ItemText key={i}>{v}</ItemText>
-                ))
-              }
+              <ItemTextBox>
+                {
+                  footerTopList[0].Text.map((v,i) => (
+                    <ItemText key={i}>{v}</ItemText>
+                  ))
+                }
+              </ItemTextBox>
             </FooterTopListItem>
           </FooterTopListItemBox>
           <FooterTopListItemBox>
             <FooterTopListItem>
               <ItemTitle>커뮤니티</ItemTitle>
-              {
-                footerTopList[1].Text.map((v,i) => (
-                  <ItemText key={i}>{v}</ItemText>
-                ))
-              }
+              <ItemTextBox>
+                {
+                  footerTopList[1].Text.map((v,i) => (
+                    <ItemText key={i}>{v}</ItemText>
+                  ))
+                }
+              </ItemTextBox>
             </FooterTopListItem>
           </FooterTopListItemBox>
           <FooterTopListItemBox>
             <FooterTopListItem>
               <ItemTitle>호스팅</ItemTitle>
-              {
-                footerTopList[2].Text.map((v,i) => (
-                  <ItemText key={i}>{v}</ItemText>
-                ))
-              }
+              <ItemTextBox>
+                {
+                  footerTopList[2].Text.map((v,i) => (
+                    <ItemText key={i}>{v}</ItemText>
+                  ))
+                }
+              </ItemTextBox>
             </FooterTopListItem>
           </FooterTopListItemBox>
           <FooterTopListItemBox>
             <FooterTopListItem>
               <ItemTitle>소개</ItemTitle>
-              {
-                footerTopList[3].Text.map((v,i) => (
-                  <ItemText key={i}>{v}</ItemText>
-                ))
-              }
+              <ItemTextBox>
+                {
+                  footerTopList[3].Text.map((v,i) => (
+                    <ItemText key={i}>{v}</ItemText>
+                  ))
+                }
+              </ItemTextBox>
             </FooterTopListItem>
           </FooterTopListItemBox>
         </FooterTop>
@@ -125,13 +132,26 @@ const FooterTop = styled.div`
   flex-direction: row;
   padding-top: 48px;
   padding-bottom: 48px;
+  @media screen and (max-width: 1127px) {
+    flex-direction: column;
+    padding-bottom: 0px;
+  }
 `
 const FooterTopListItemBox = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+  @media screen and (max-width: 1127px) {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+  }
+  
 `
 const FooterTopListItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `
 const ItemTitle = styled.div`
   color: rgb(34, 34, 34);
@@ -139,12 +159,27 @@ const ItemTitle = styled.div`
   line-height: 18px;
   font-weight: 800;
 `
+const ItemTextBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media screen and (max-width: 1127px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+`
 const ItemText = styled.div`
   color: rgb(34, 34, 34);
   font-size: 14px;
   line-height: 18px;
   margin-top: 16px;
+  @media screen and (max-width: 1127px) {
+    flex-direction: row;
+    flex-basis: 33.3333%;
+    
+  }
 `
+
 const FooterBottom = styled.div`
   width: 100%;
   padding: 24px 0;
@@ -153,6 +188,12 @@ const FooterBottom = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 1127px) {
+    flex-direction: column-reverse;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    border-top: 0;
+  }
 `
 const CompanyBox = styled.div`
   display: flex;
@@ -175,6 +216,9 @@ const SocialBox = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: end;
+  @media screen and (max-width: 1127px){
+    margin-bottom: 16px;
+  }
 `
 const LngText = styled.span`
   font-weight: 600 ;

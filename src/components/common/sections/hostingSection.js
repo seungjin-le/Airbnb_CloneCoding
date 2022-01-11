@@ -9,7 +9,7 @@ const HostingSection = () => {
       <Section>
         <SectionImgBox>
           <HostingTextBox>
-            <HostingTitle>호스팅에 관해 <br/> 궁금하신 점이 <br/> 있나요?</HostingTitle>
+            <HostingTitle><div>호스팅에 관해 <br/> 궁금하신 점이 <br/> 있나요?</div></HostingTitle>
             <HostingBtnBox>
               <HostingBtn>슈퍼호스트에게 물어보세요</HostingBtn>
             </HostingBtnBox>
@@ -29,6 +29,10 @@ const Section = styled(PaddingBox)`
   width: 100%;
   height: 44.2vw;
   border-radius: 10px;
+  @media screen and (max-width: 1127px){
+    padding:0;
+    border-radius: 0px;
+  }
 `
 const SectionImgBox = styled.div`
   position: relative;
@@ -48,6 +52,9 @@ const BackImg = styled.div`
   background-size: 100%;
   z-index: -1;
   border-radius: 10px;
+  @media screen and (max-width: 1127px){
+    border-radius: 0px;
+  }
 `
 const HostingTextBox = styled.div`
   width: 100%;
@@ -65,6 +72,17 @@ const HostingTitle = styled.div`
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 105px;
+  @media screen and (max-width: 1300px){
+    font-size: 74px;
+    line-height: normal;
+  }
+  & > div{
+    width: 40vw;
+  }
+  @media screen and (max-width: 1127px){
+    font-size: 45px;
+    line-height: normal;
+  }
 `
 const HostingBtnBox = styled.div`
 `
