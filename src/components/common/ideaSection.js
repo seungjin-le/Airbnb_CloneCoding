@@ -42,6 +42,7 @@ const IdeaSection = () => {
 }
 const SectionBox = styled.div`
   padding: 96px 0 48px;
+  box-sizing: border-box;
 `
 const Section = styled(PaddingBox)`
 `
@@ -52,7 +53,7 @@ const RecommendationBox = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  
+  box-sizing: border-box;
 `
 const RecommendationItem = styled.div`
   display: flex;
@@ -60,7 +61,6 @@ const RecommendationItem = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  
   width: 24%;
   height: 28vw;
   border-radius: 15px;

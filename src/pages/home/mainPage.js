@@ -5,6 +5,7 @@ import SectionImg from '../../components/common/sectionImg'
 import {PageWrap} from '../../components/common/styled'
 import IdeaSection from '../../components/common/ideaSection'
 import Experience from '../../components/common/experience'
+import HostingSection from '../../components/common/hostingSection'
 
 const MainPage = () => {
   return (
@@ -15,11 +16,14 @@ const MainPage = () => {
         <SectionImg />
       </FirstSection>
       <IdeaSection />
-      <Experience />
+
+      <HostingSection/>
     </Page>
   );
 }
+//<Experience />
 const Page = styled(PageWrap)`
+  box-sizing: border-box;
 `
 const FirstSection = styled.div`
   background: #000;

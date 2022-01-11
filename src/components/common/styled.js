@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const PageWrap = styled.div`
     width:100vw;
     height:100vh;
+    box-sizing: border-box;
 `;
 export const TextMiddle = styled.div`
     position:absolute;
@@ -13,7 +14,7 @@ export const TextMiddle = styled.div`
     transform:translate(-50%,-50%);
 `;
 export const PaddingBox = styled.div`
-  width: 100%;
+  width: 99%;
   padding: 0 80px;
   @media screen and (max-width: 950px) {
     padding: 0 40px;

@@ -19,6 +19,7 @@ const SectionImg = () => {
 const SectionBox = styled.div`
   width: 100%;
   height: 100%;
+  
 `
 const ImgBox = styled(PaddingBox)`
   height: 100%;
