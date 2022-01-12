@@ -121,9 +121,12 @@ const Footer = () => {
 const FooterBox = styled.div`
   width: 100%;
   background: rgb(247, 247, 247);
+  
 `
 const FooterPaddingBox = styled(PaddingBox)`
   width: 100%;
+  max-width: 1760px;
+  margin: 0 auto;
 `
 const FooterTop = styled.div`
   display: flex;

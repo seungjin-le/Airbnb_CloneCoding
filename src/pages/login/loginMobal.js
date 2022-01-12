@@ -10,7 +10,7 @@ const LoginMobal = ({ toggleState }) => {
     toggleState(false)
   }
   return (
-    <ModalBackground>
+    <ModalBackground onClick={onClick}>
       <JoinModalBox>
         <ModalTitleBox>
           <CloseIconBox onClick={onClick}>

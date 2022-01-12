@@ -41,7 +41,7 @@ const Header = (props) => {
               <CenterBox>
                 <CenterTextBox>
                   <LineBox>
-                    <CenterText>숙소</CenterText><UnderLine style={{width:'10px'}}/>
+                    <CenterText><Link to='/search'>숙소</Link></CenterText><UnderLine style={{width:'10px'}}/>
                   </LineBox>
                   <LineBox>
                     <CenterText>체험</CenterText><UnderLine/>
@@ -232,6 +232,8 @@ const DropdownMenu = styled.ul`
   width: 240px;
   border-radius: 10px;
   background: #fff;
+  z-index: 2;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 `
 const ListItem = styled.li`
   padding: 12px 16px 12px 16px;

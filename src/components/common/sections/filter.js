@@ -42,6 +42,7 @@ const HeaderBox = styled(PaddingBox)`
   padding-top: 14px;
   padding-bottom: 14px;
   max-width: 1760px;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;

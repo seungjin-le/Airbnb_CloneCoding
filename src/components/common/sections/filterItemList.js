@@ -4,11 +4,16 @@ import {AiOutlineMenu} from 'react-icons/ai'
 import {useState} from 'react'
 import {BsMapFill} from 'react-icons/bs'
 import {PaddingBox} from '../styled'
+import {IoIosHeartEmpty,IoIosHeart} from 'react-icons/io'
 
 const FilterItemList = () => {
   const [toggleMap, setToggleMap] = useState(false);
+  const [like, setLike] = useState(true);
   const MapToggle = () => {
     setToggleMap(toggleMap =>!toggleMap)
+  }
+  const likeToggle = () => {
+    setLike(like =>!like)
   }
   return (
     <KakaoMapBox className={toggleMap ? 'list' : 'kakaoMap'}>
@@ -16,7 +21,12 @@ const FilterItemList = () => {
         toggleMap ?
         <ItemListBox>
           <ItemBox>
-            <ItemImg></ItemImg>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
             <LodgingTextBox>
               <LodgingTitleBox>
                 <Title>Balamban, 중부 비사야</Title>
@@ -29,7 +39,12 @@ const FilterItemList = () => {
             </LodgingTextBox>
           </ItemBox>
           <ItemBox>
-            <ItemImg></ItemImg>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
             <LodgingTextBox>
               <LodgingTitleBox>
                 <Title>Balamban, 중부 비사야</Title>
@@ -42,33 +57,12 @@ const FilterItemList = () => {
             </LodgingTextBox>
           </ItemBox>
           <ItemBox>
-          <ItemImg></ItemImg>
-          <LodgingTextBox>
-            <LodgingTitleBox>
-              <Title>Balamban, 중부 비사야</Title>
-              <Title>₩308.990 / 박</Title>
-            </LodgingTitleBox>
-            <LodgingTitleBox>
-              <SubText>2,2893km 거리</SubText>
-              <SubText>1월 31일 ~ 2월7일</SubText>
-            </LodgingTitleBox>
-          </LodgingTextBox>
-        </ItemBox>
-          <ItemBox>
-          <ItemImg></ItemImg>
-          <LodgingTextBox>
-            <LodgingTitleBox>
-              <Title>Balamban, 중부 비사야</Title>
-              <Title>₩308.990 / 박</Title>
-            </LodgingTitleBox>
-            <LodgingTitleBox>
-              <SubText>2,2893km 거리</SubText>
-              <SubText>1월 31일 ~ 2월7일</SubText>
-            </LodgingTitleBox>
-          </LodgingTextBox>
-        </ItemBox>
-          <ItemBox>
-            <ItemImg></ItemImg>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
             <LodgingTextBox>
               <LodgingTitleBox>
                 <Title>Balamban, 중부 비사야</Title>
@@ -81,7 +75,12 @@ const FilterItemList = () => {
             </LodgingTextBox>
           </ItemBox>
           <ItemBox>
-            <ItemImg></ItemImg>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
             <LodgingTextBox>
               <LodgingTitleBox>
                 <Title>Balamban, 중부 비사야</Title>
@@ -94,7 +93,12 @@ const FilterItemList = () => {
             </LodgingTextBox>
           </ItemBox>
           <ItemBox>
-            <ItemImg></ItemImg>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
             <LodgingTextBox>
               <LodgingTitleBox>
                 <Title>Balamban, 중부 비사야</Title>
@@ -107,7 +111,138 @@ const FilterItemList = () => {
             </LodgingTextBox>
           </ItemBox>
           <ItemBox>
-            <ItemImg></ItemImg>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
+            <LodgingTextBox>
+              <LodgingTitleBox>
+                <Title>Balamban, 중부 비사야</Title>
+                <Title>₩308.990 / 박</Title>
+              </LodgingTitleBox>
+              <LodgingTitleBox>
+                <SubText>2,2893km 거리</SubText>
+                <SubText>1월 31일 ~ 2월7일</SubText>
+              </LodgingTitleBox>
+            </LodgingTextBox>
+          </ItemBox>
+          <ItemBox>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
+            <LodgingTextBox>
+              <LodgingTitleBox>
+                <Title>Balamban, 중부 비사야</Title>
+                <Title>₩308.990 / 박</Title>
+              </LodgingTitleBox>
+              <LodgingTitleBox>
+                <SubText>2,2893km 거리</SubText>
+                <SubText>1월 31일 ~ 2월7일</SubText>
+              </LodgingTitleBox>
+            </LodgingTextBox>
+          </ItemBox>
+          <ItemBox>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
+            <LodgingTextBox>
+              <LodgingTitleBox>
+                <Title>Balamban, 중부 비사야</Title>
+                <Title>₩308.990 / 박</Title>
+              </LodgingTitleBox>
+              <LodgingTitleBox>
+                <SubText>2,2893km 거리</SubText>
+                <SubText>1월 31일 ~ 2월7일</SubText>
+              </LodgingTitleBox>
+            </LodgingTextBox>
+          </ItemBox>
+          <ItemBox>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
+            <LodgingTextBox>
+              <LodgingTitleBox>
+                <Title>Balamban, 중부 비사야</Title>
+                <Title>₩308.990 / 박</Title>
+              </LodgingTitleBox>
+              <LodgingTitleBox>
+                <SubText>2,2893km 거리</SubText>
+                <SubText>1월 31일 ~ 2월7일</SubText>
+              </LodgingTitleBox>
+            </LodgingTextBox>
+          </ItemBox>
+          <ItemBox>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
+            <LodgingTextBox>
+              <LodgingTitleBox>
+                <Title>Balamban, 중부 비사야</Title>
+                <Title>₩308.990 / 박</Title>
+              </LodgingTitleBox>
+              <LodgingTitleBox>
+                <SubText>2,2893km 거리</SubText>
+                <SubText>1월 31일 ~ 2월7일</SubText>
+              </LodgingTitleBox>
+            </LodgingTextBox>
+          </ItemBox>
+          <ItemBox>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
+            <LodgingTextBox>
+              <LodgingTitleBox>
+                <Title>Balamban, 중부 비사야</Title>
+                <Title>₩308.990 / 박</Title>
+              </LodgingTitleBox>
+              <LodgingTitleBox>
+                <SubText>2,2893km 거리</SubText>
+                <SubText>1월 31일 ~ 2월7일</SubText>
+              </LodgingTitleBox>
+            </LodgingTextBox>
+          </ItemBox>
+          <ItemBox>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
+            <LodgingTextBox>
+              <LodgingTitleBox>
+                <Title>Balamban, 중부 비사야</Title>
+                <Title>₩308.990 / 박</Title>
+              </LodgingTitleBox>
+              <LodgingTitleBox>
+                <SubText>2,2893km 거리</SubText>
+                <SubText>1월 31일 ~ 2월7일</SubText>
+              </LodgingTitleBox>
+            </LodgingTextBox>
+          </ItemBox>
+          <ItemBox>
+            <ItemImg>
+              {like ?
+                <IoIosHeart className={'like'} onClick={likeToggle}/> :
+                <IoIosHeartEmpty onClick={likeToggle}/>}
+              <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+            </ItemImg>
             <LodgingTextBox>
               <LodgingTitleBox>
                 <Title>Balamban, 중부 비사야</Title>
@@ -144,9 +279,10 @@ const KakaoMapBox = styled.div`
     height: 840px;
   }
   &.list {
-    height: 100%;
+    min-width: 800px;
   }
 `
+//height: 100%;
 const MapToggleBtn = styled.div`
   position: fixed;
   display: flex;
@@ -180,8 +316,10 @@ const ItemListBox = styled(PaddingBox)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: start;
+  max-width: 1760px;
+  margin: 0 auto;
   overflow-y: hidden;
 `
 const ItemBox = styled.div`
@@ -191,7 +329,8 @@ const ItemBox = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  margin-right: 20px;
+  max-height: 470px;
   @media screen and (max-width: 1231px){
     width: 31.5%;
     height: 31.5vw;
@@ -205,6 +344,22 @@ const ItemImg = styled.div`
   border-radius: 10px;
   margin-bottom: 10px;
   box-sizing: border-box;
+  position: relative;
+  & svg{
+    position: absolute;
+    left: 90%;
+    top: 5%;
+    font-size: 25px;
+    color: #fff;
+    &.like {
+      color: red;
+    }
+  }
+`
+const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
 `
 const LodgingTextBox = styled.div`
 `
@@ -215,7 +370,14 @@ const LodgingTitleBox = styled.div`
   justify-content: space-between;
 `
 const Title = styled.div`
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
 `
 const SubText = styled.div`
+  font-size: 16px;
+  line-height: 20px;
+  color: rgb(113, 113, 113)
 `
+
 export default FilterItemList;
