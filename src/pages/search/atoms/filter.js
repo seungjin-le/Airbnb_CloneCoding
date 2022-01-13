@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {PaddingBox} from '../styled'
+import {PaddingBox} from '../../../components/common/styled'
 import {MdKeyboardArrowDown} from 'react-icons/md'
 const Filter = () => {
   return (

@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom";
-import { PaddingBox } from "../styled";
+import { PaddingBox } from "./styled";
 import {AiOutlineMenu} from 'react-icons/ai'
 import {useState} from 'react'
-import LoginMobal from '../../../pages/login/loginMobal'
+import LoginMobal from '../../pages/login/loginMobal'
 
 
 const Header = (props) => {

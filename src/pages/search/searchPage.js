@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import {PageWrap} from '../../components/common/styled'
-import Header from '../../components/common/header/header'
-import Filter from '../../components/common/sections/filter'
-import FilterItemList from '../../components/common/sections/filterItemList'
-import Footer from '../../components/common/footer/footer'
+import Header from '../../components/common/header'
+import Filter from './atoms/filter'
+import FilterItemList from './atoms/filterItemList'
+import Footer from '../../components/common/footer'
 
 const SearchPage = () => {
   return(

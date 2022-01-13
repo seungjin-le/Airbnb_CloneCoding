@@ -21,11 +21,11 @@
 // }(document, 'script', 'facebook-jssdk'));
 // </script>
 
-FB.api(
-  /{person-id}",
-  function(response){
-    if(response && !response.error) {
-      /*handle the result*/
-    }
-  }
-)
+//FB.api(
+//   /{person-id}",
+//   function(response){
+//     if(response && !response.error) {
+//       /*handle the result*/
+//     }
+//   }
+// )

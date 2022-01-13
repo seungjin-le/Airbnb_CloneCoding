@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {PaddingBox, SectionTitle} from '../styled'
+import {PaddingBox, SectionTitle} from '../../../components/common/styled'
 
 const Experience = () => {
   return (

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {PaddingBox} from '../styled'
+import {PaddingBox} from '../../../components/common/styled'
 import {Link} from 'react-router-dom'
 
 const Covid19Msg = () => {

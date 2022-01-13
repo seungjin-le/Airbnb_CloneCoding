@@ -7,10 +7,10 @@ import {AiFillApple, AiOutlineMail} from 'react-icons/ai'
 
 const LoginMobal = ({ toggleState }) => {
   const onClick = () => {
-    toggleState(false)
+    toggleState(toggle => !toggle)
   }
   return (
-    <ModalBackground onClick={onClick}>
+    <ModalBackground>
       <JoinModalBox>
         <ModalTitleBox>
           <CloseIconBox onClick={onClick}>
@@ -72,6 +72,7 @@ const JoinModalBox = styled.div`
   background: #fff;
   display: flex;
   flex-direction: column;
+  z-index: 2;
 `
 const ModalTitleBox = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { TextMiddle, PageWrap } from "../../components/common/styled";
-import Header from "../../components/common/header/header";
+import Header from "../../components/common/header";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";

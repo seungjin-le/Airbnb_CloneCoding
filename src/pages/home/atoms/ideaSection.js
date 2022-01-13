@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {PaddingBox, SectionTitle} from '../styled'
+import {PaddingBox, SectionTitle} from '../../../components/common/styled'
 //<ItemImg style={{background:'url(https://a0.muscache.com/im/pictures/cc5716eb-7454-4ae4-890a-fdcaf6b724be.jpg?im_q=highq&im_w=720) no-repat center center fixed'}}></ItemImg>
 const IdeaSection = () => {
   return (
