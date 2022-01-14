@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import Header from '../../components/common/header'
-import Covid19Msg from './atoms/covid19Msg'
-import SectionImg from './atoms/sectionImg'
+import Covid19Msg from './molecules/covid19Msg'
+import SectionImg from './molecules/sectionImg'
 import {PageWrap} from '../../components/common/styled'
-import IdeaSection from './atoms/ideaSection'
-import Experience from './atoms/experience'
-import HostingSection from './atoms/hostingSection'
+import IdeaSection from './molecules/ideaSection'
+import Experience from './molecules/experience'
+import HostingSection from './molecules/hostingSection'
 import Footer from '../../components/common/footer'
 
 const MainPage = () => {

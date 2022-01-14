@@ -3,7 +3,8 @@ import {PaddingBox} from '../../../components/common/styled'
 import {BiSearch} from 'react-icons/bi'
 import {useState} from 'react'
 
-const Search = () => {
+const Search = ({move}) => {
+  console.log(move)
   const [searchClick, setSearchClick] = useState(false);
   const searchIcon = () => {
     setSearchClick(search => !search);
@@ -11,8 +12,12 @@ const Search = () => {
   return (
     <Box>
       <SearchPaddingBox>
-        <SearchBox>
+        <SearchBox className={move ? 'true' : 'false'}>
           <BoxItemList>
+            {
+              move ? 'true' : false
+
+            }
             <SearchItem className='position'>
               <ItemTitle className='positionTitle'>위치</ItemTitle>
               <PositionInput placeholder='어디로 여행가세요?' type='text'></PositionInput>
@@ -49,6 +54,7 @@ const Box = styled.div`
 `
 const SearchPaddingBox = styled(PaddingBox)`
   width: 100%;
+  position: relative;
 `
 const SearchBox = styled.div`
   margin: 0 auto;
@@ -65,7 +71,31 @@ const SearchBox = styled.div`
   color: #222;
   box-shadow: 0px 16px 32px rgb(0 0 0 / 15%), 0px 3px 8px rgb(0 0 0 / 10%);
   box-sizing: border-box;
-  
+  transition: all .3s;
+  &.true{
+    width: 300px;
+    position: fixed;
+    top: 50px;
+    height: 48px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 16px 32px rgb(0 0 0 / 15%), 0px 3px 8px rgb(0 0 0 / 10%);
+    z-index: 2;
+    & .true svg {
+      
+    }
+    
+    & .checkIn,
+    & .checkOut,
+    & .personnel,
+    & .position,
+    & .one,
+    & .two,
+    & .three
+    {
+      display: none;
+    }
+  }
 `
 const BoxItemList = styled.div`
   width: 100%;
