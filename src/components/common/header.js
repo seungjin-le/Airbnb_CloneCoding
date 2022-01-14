@@ -4,6 +4,7 @@ import { PaddingBox } from "./styled";
 import {AiOutlineMenu} from 'react-icons/ai'
 import {useState} from 'react'
 import LoginMobal from '../../pages/login/loginMobal'
+import Search from '../../pages/home/atoms/search'
 
 
 const Header = (props) => {
@@ -91,6 +92,7 @@ const Header = (props) => {
               </DropdownMenuBox>
             </UserBox>
           </HeaderBox>
+          <Search />
         </HeaderPaddingBox>
     )
 }

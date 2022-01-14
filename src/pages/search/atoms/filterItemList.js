@@ -275,12 +275,12 @@ const FilterItemList = () => {
 const KakaoMapBox = styled.div`
   width: 100%;
   position: relative;
+  height: 100%;
   &.kakaoMap {
     height: 840px;
   }
   &.list {
-    min-width: 800px;
-    height: 100%;
+    min-height: 800px;
   }
 `
 
@@ -321,7 +321,6 @@ const ItemListBox = styled(PaddingBox)`
   justify-content: start;
   max-width: 1760px;
   margin: 0 auto;
-  overflow-y: hidden;
 `
 const ItemBox = styled.div`
   width: 23.3%;

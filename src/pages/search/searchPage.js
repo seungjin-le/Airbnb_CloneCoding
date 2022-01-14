@@ -8,10 +8,12 @@ import Footer from '../../components/common/footer'
 const SearchPage = () => {
   return(
     <Page>
-      <Header page={'search'}/>
-      <Filter />
-      <FilterItemList />
-      <Footer />
+      <PageBox>
+        <Header page={'search'}/>
+        <Filter />
+        <FilterItemList />
+        <Footer />
+      </PageBox>
     </Page>
   );
 }
@@ -19,6 +21,9 @@ const SearchPage = () => {
 const Page = styled(PageWrap)`
   background: #fff;
   
+`
+const PageBox = styled.div`
+  width: 100%;
 `
 
 export default SearchPage;
