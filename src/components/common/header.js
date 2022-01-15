@@ -11,7 +11,7 @@ const Header = (props) => {
 
   const [onClick, setOnClick] = useState(false);
   const [userJoin, setUserJoin] = useState(false);
-  const [scroll, setScroll] = useState(0);//50px
+  const [scroll, setScroll] = useState(false);//50px
 
 
   useEffect(() => {

@@ -15,7 +15,7 @@ const Search = ({move}) => {
         <SearchBox className={move ? 'true' : 'false'}>
           <BoxItemList>
             {
-              move ? 'true' : false
+              move ? <div className='text'>검색 시작하기</div> : false
 
             }
             <SearchItem className='position'>
@@ -38,7 +38,11 @@ const Search = ({move}) => {
               <ItemText>게스트 추가</ItemText>
             </SearchItem>
             <SearchIconBox onClick={searchIcon} className={searchClick ? 'true' : 'false'}>
-              <BiSearch />
+              {move ?
+                <BiSearch style={{fontSize:'14px', padding:'0'}} /> :
+                <BiSearch/>
+              }
+
               <div>
                 검색
               </div>
@@ -75,16 +79,13 @@ const SearchBox = styled.div`
   &.true{
     width: 300px;
     position: fixed;
-    top: 50px;
+    top: 40px;
     height: 48px;
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0px 16px 32px rgb(0 0 0 / 15%), 0px 3px 8px rgb(0 0 0 / 10%);
     z-index: 2;
-    & .true svg {
-      
-    }
-    
+
     & .checkIn,
     & .checkOut,
     & .personnel,
@@ -107,6 +108,16 @@ const BoxItemList = styled.div`
   justify-content: space-between;
   flex-wrap: nowrap;
   position: relative;
+  & > .text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 14px;
+    line-height: 18px;
+  }
 `
 const SearchItem = styled.div`
   display: flex;
@@ -125,7 +136,7 @@ const SearchItem = styled.div`
     background-color:transparent;
   }
   &.checkIn,
-  &.checkOut, 
+  &.checkOut,
   &.personnel
   {
     cursor: pointer;
@@ -133,7 +144,7 @@ const SearchItem = styled.div`
   &.position{
     flex: 1.3;
     & .positionTitle {
-      cursor: pointer;  
+      cursor: pointer;
     }
   }
 `
@@ -179,7 +190,7 @@ const SearchIconBox = styled.div`
   &.true {
    & div {
      display: inline-block;
-   } 
+   }
   }
   & svg{
     font-size: 20px;

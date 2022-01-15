@@ -16,9 +16,10 @@ const FilterItemList = () => {
     setLike(like =>!like)
   }
   return (
-    <KakaoMapBox className={toggleMap ? 'list' : 'kakaoMap'}>
+    <KakaoMapBox className={toggleMap ? 'kakaoMap' : 'list'}>
       {
         toggleMap ?
+        <KakaoMap/> :
         <ItemListBox>
             <ItemBox>
               <ItemImg>
@@ -254,8 +255,8 @@ const FilterItemList = () => {
                 </LodgingTitleBox>
               </LodgingTextBox>
             </ItemBox>
-          </ItemListBox>:
-        <KakaoMap/>
+          </ItemListBox>
+
       }
       {toggleMap ?
         <MapToggleBtn onClick={MapToggle}>
@@ -338,7 +339,6 @@ const ItemBox = styled.div`
 `
 const ItemImg = styled.div`
   height: 100%;
-  // background: url("https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720") no-repeat;
   background: gray;
   background-size: 100%;
   border-radius: 10px;
