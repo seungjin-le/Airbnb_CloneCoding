@@ -10,8 +10,8 @@ const FilterList = () => {
   return (
     <ListBox>
       <BtnBox>
-        <FilterChoiceBtn>요금</FilterChoiceBtn>
-        <FilterChoiceBtn>숙소 유형</FilterChoiceBtn>
+        <FilterChoiceBtn icon={true}>요금</FilterChoiceBtn>
+        <FilterChoiceBtn icon={true}>숙소 유형</FilterChoiceBtn>
         <span className='line' />
         <SelectBtnBox>
           {filterTextArray.map((v,i) => (
@@ -37,7 +37,7 @@ const BtnBox = styled.div`
   color: #222222;
   font-size: 16px;
   line-height: 20px;
-  padding: 8px 24px 12px;
+  padding: 8px 20px 12px;
   height: 68px;
   box-sizing: border-box;
   & .line {
