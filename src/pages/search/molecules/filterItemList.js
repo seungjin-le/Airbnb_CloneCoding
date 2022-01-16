@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import KakaoMap from './kakaoMap'
+import KakaoMap from '../../../components/common/atoms/kakaoMap'
 import {AiOutlineMenu} from 'react-icons/ai'
 import {useState} from 'react'
 import {BsMapFill} from 'react-icons/bs'
