@@ -33,17 +33,22 @@ const RoomList = () => {
 
 const RoomListBox = styled.div`
   width: 100%;
+  height: 100%;
   border-top: 1px solid #ddd;
   display: flex;
   flex-direction: row;
 `
 const ListBox = styled.div`
   max-width: 840px;
-  max-height: 836px;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 1127px){
+    & {
+      max-width: 100%;
+    }
+  }
 `
 const ExplainText = styled.div`
   width: 100%;
@@ -66,15 +71,22 @@ const ItemBox = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  height: 100%;
 `
 const MapBox = styled.div`
   width: 100%;
   height: 100%;
+  @media screen and (max-width: 1127px){
+    & {
+      display: none;
+    }
+  }
 `
 const ListPagNumBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
 `
 const PageNumBtnBox = styled.div`
   display: flex;

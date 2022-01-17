@@ -8,11 +8,9 @@ import Search from '../../pages/home/molecules/search'
 
 
 const Header = (props) => {
-
   const [onClick, setOnClick] = useState(false);
   const [userJoin, setUserJoin] = useState(false);
   const [scroll, setScroll] = useState(false);//50px
-
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -21,11 +19,10 @@ const Header = (props) => {
 
     };
   }, []);
-
+  const pageUrl = document.location.href.split('http://localhost:3000/').join('');
   const handleScroll = () => {
     if(window.scrollY >= 50){
       setScroll(true);
-      console.log(scroll)
     }else{
       setScroll(false);
     }
@@ -43,7 +40,7 @@ const Header = (props) => {
     setUserJoin(userJoin => !userJoin);
   }
   return (
-        <HeaderPaddingBox>
+        <HeaderPaddingBox className={pageUrl === 'filter' ? 'filter' : false}>
           { userJoin ? <LoginMobal toggleState={toggleState} /> : false }
           <HeaderBox className={scroll ? 'true' : 'false'}>
             <LogoBox>
@@ -73,7 +70,10 @@ const Header = (props) => {
                 </CenterTextBox>
               </CenterBox>
             }
-            <UserBox>
+            {props.filterPage === 'filterPage' ? <Search move={'filterPage'}/>
+              : <div></div>
+            }
+            <UserBox className={props.filterPage === 'filterPage' ? 'filter' : false}>
               {props.page === 'search' ?
                 <HostStartBox style={{color:'#222'}}>호스트 되기</HostStartBox> :
                 <HostStartBox className={scroll ? 'true' : 'false'}>호스트 되기</HostStartBox>
@@ -114,7 +114,7 @@ const Header = (props) => {
           </HeaderBox>
           {props.page === 'search' ?
             false :
-            <Search move={scroll}/>
+            <Search move={scroll} />
           }
         </HeaderPaddingBox>
     )
@@ -123,6 +123,10 @@ const Header = (props) => {
 const HeaderPaddingBox = styled.div`
   width: 100%;
   height: 80px;
+  &.filter > div{
+    padding: 0 30px;
+    max-width: 100%;
+  }
 `
 const HeaderBox = styled(PaddingBox)`
   height: 100%;
@@ -204,6 +208,10 @@ const UserBox = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: end;
+  &.filter {
+    min-width: 300px;
+    flex: 1;
+  }
 `
 const HostStartBox = styled.div`
   padding: 12px;

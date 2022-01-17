@@ -4,19 +4,29 @@ import {BiSearch} from 'react-icons/bi'
 import {useState} from 'react'
 
 const Search = ({move}) => {
-  console.log(move)
+
   const [searchClick, setSearchClick] = useState(false);
   const searchIcon = () => {
     setSearchClick(search => !search);
+    if(!move){
+      moveFilterPage()
+    }
   }
+  const pageUrl = document.location.href.split('http://localhost:3000/').join('');
+  const moveFilterPage = () => {
+    window.location.href='/filter'
+  }
+
+
+
   return (
     <Box>
       <SearchPaddingBox>
         <SearchBox className={move ? 'true' : 'false'}>
           <BoxItemList>
             {
-              move ? <div className='text'>검색 시작하기</div> : false
-
+              move ? <div className='text'>검색 시작하기</div> :
+                false
             }
             <SearchItem className='position'>
               <ItemTitle className='positionTitle'>위치</ItemTitle>
@@ -40,12 +50,14 @@ const Search = ({move}) => {
             <SearchIconBox onClick={searchIcon} className={searchClick ? 'true' : 'false'}>
               {move ?
                 <BiSearch style={{fontSize:'14px', padding:'0'}} /> :
-                <BiSearch/>
+                <BiSearch />
+              }
+              {move ? false :
+                <div>
+                  검색
+                </div>
               }
 
-              <div>
-                검색
-              </div>
             </SearchIconBox>
           </BoxItemList>
         </SearchBox>
@@ -187,6 +199,7 @@ const SearchIconBox = styled.div`
   align-items: center;
   transition: .3s;
   transition: all .3s;
+  cursor: pointer;
   &.true {
    & div {
      display: inline-block;

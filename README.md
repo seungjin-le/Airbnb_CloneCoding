@@ -49,7 +49,12 @@
   + Filter Btn Width 크기에따라 버튼 갯수 감소 기능 추가
 
 ## 2022-01-16 진행상황
-+ 
++ 숙소 리스트 이동시 Header 스타일 변경
+  + 숙소리스트 header padding 값이 적용되지 않음
+  + 숙소리스트 반응형 일부 적용
++filterPage의 filter 버튼 반응형 일부 적용
++ RoomDetails Page 추가
++ RoomDetails Page Title 추가
 
 ## 2022-01-17 진행상황
 + 

@@ -4,8 +4,13 @@ import {Link} from 'react-router-dom'
 import {IoLogoFacebook} from 'react-icons/io'
 import {FcGoogle} from 'react-icons/fc'
 import {AiFillApple, AiOutlineMail} from 'react-icons/ai'
+import {useState} from 'react'
 
 const LoginMobal = ({ toggleState }) => {
+  const [emailLogin, setEmailLogin] = useState(false);
+  const emailLoginClick = () => {
+    setEmailLogin(emailLogin => !emailLogin);
+  }
   const onClick = () => {
     toggleState(toggle => !toggle)
   }
@@ -20,16 +25,21 @@ const LoginMobal = ({ toggleState }) => {
         </ModalTitleBox>
         <LoginForm>
           <WelcomeMsg>에어비앤비에 오신것을 환영합니다.</WelcomeMsg>
-          <FormBox>
-          <NationForm>
-              <option value="한국">한국</option>
-              <option value="중국">중국</option>
-              <option value="마국">미국</option>
-              <option value="일본">일본</option>
-              <option value="러시아">러시아</option>
-            </NationForm>
-            <PhoneNumber type='text' placeholder='전화번호' />
-          </FormBox>
+          {emailLogin ?
+            <FormBox>
+              <PhoneNumber type='email' placeholder='이메일' />
+            </FormBox> :
+            <FormBox>
+              <NationForm>
+                <option value="한국">한국</option>
+                <option value="중국">중국</option>
+                <option value="마국">미국</option>
+                <option value="일본">일본</option>
+                <option value="러시아">러시아</option>
+              </NationForm>
+              <PhoneNumber type='text' placeholder='전화번호' />
+            </FormBox>
+          }
           <SubText>전화나 문자로 전화번호를 확인하겟습니다. 일반 문자 메시지 여금 및 데이터 요금이 부과됩니다.<Link to='/'> 개인정보 처리방침</Link></SubText>
           <LoginBtn>계속</LoginBtn>
           <AndLineBox><Line/><span>또는</span><Line/></AndLineBox>
@@ -45,7 +55,7 @@ const LoginMobal = ({ toggleState }) => {
             <AiFillApple style={{color:'#333'}}/>
             <span>Apple 계정으로 로그인하기</span>
           </SocialLoginBtn>
-          <SocialLoginBtn style={{marginBottom:'0px'}}>
+          <SocialLoginBtn style={{marginBottom:'0px'}} onClick={emailLoginClick}>
             <AiOutlineMail />
             <span>이메일로 로그인하기</span>
           </SocialLoginBtn>
@@ -60,7 +70,7 @@ const ModalBackground = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,.5);
-  z-index: 2;
+  z-index: 3;
 `
 const JoinModalBox = styled.div`
   position: relative;

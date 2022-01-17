@@ -20,7 +20,7 @@ const KakaoMap = () => {
 
 const MapBox = styled.div`
   width: 100%;
-  height: 840px;
+  height: 100%;
 `
 
 export default KakaoMap;

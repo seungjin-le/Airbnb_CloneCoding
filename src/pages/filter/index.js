@@ -8,7 +8,7 @@ import RoomList from './molecules/roomList'
 const FilterPage = () => {
   return(
     <Page>
-      <Header page={'search'}/>
+      <Header page={'search'} filterPage={'filterPage'}/>
       <FilterList />
       <RoomList />
       <Footer />

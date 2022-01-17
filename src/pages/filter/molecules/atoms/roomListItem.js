@@ -1,15 +1,19 @@
 import styled from 'styled-components'
 import {IoMdHeartEmpty} from 'react-icons/io'
 import {RiStarSFill} from 'react-icons/ri'
+import {Link} from 'react-router-dom'
 
 const RoomListItem = () => {
   return (
     <ItemBox>
       <ImgBox>
-        <SuperHostBtn>슈퍼호스트</SuperHostBtn>
-        <img src="https://a0.muscache.com/im/pictures/2ae45f5d-0c2e-4af9-af97-c4aa4d388e89.jpg?im_w=720" alt=""/>
+        <Link to={'/roomDetails'}>
+          <SuperHostBtn>슈퍼호스트</SuperHostBtn>
+          <img src="https://a0.muscache.com/im/pictures/2ae45f5d-0c2e-4af9-af97-c4aa4d388e89.jpg?im_w=720" alt=""/>
+        </Link>
       </ImgBox>
       <TextBox>
+        <Link to={'/roomDetails'} >
         <div className='box'>
           <TitleBox>
             <Title>
@@ -24,10 +28,13 @@ const RoomListItem = () => {
           <SubText>최대 인원 3명 · 침대1 개 · 욕실 1개</SubText>
           <SubText>무료 주차 공간 · 주방 · 무선 인터넷 · 난방</SubText>
         </div>
+        </Link>
         <RatingsBox>
+          <Link to={'/roomDetails'} >
           <RiStarSFill />
           <RatingsNum>4.90</RatingsNum>
           <RatingsText>(후기 114개)</RatingsText>
+          </Link>
         </RatingsBox>
       </TextBox>
     </ItemBox>
