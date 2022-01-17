@@ -17,7 +17,7 @@ const RoomDetails = () => {
 
 //
 const Page = styled(PageWrap)`
-  
+  height: 100%;
 `
 
 export default RoomDetails;
