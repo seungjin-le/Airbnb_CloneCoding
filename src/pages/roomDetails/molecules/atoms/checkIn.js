@@ -11,8 +11,7 @@ const CheckIn = () => {
   const firstWeek = today.clone().startOf('month').week();
   const lastWeek = today.clone().endOf('month').week() === 1 ? 53 : today.clone().endOf('month').week();
   const arr =['월','화','수','목','금','토','일'];
-  console.log(moment().format('DD'))
-  const calendarArr=()=>{
+  const calendarArr=(a)=>{
 
     let result = [];
     let week = firstWeek;
@@ -51,31 +50,35 @@ const CheckIn = () => {
     }
     return result;
   }
-
+//
   return(
     <FlexBox>
       <MomentTitleBox>
         <MomentTitle>체크인 날짜를 선택해 주세요</MomentTitle>
         <MomentSubTitle>여행 날짜를 입력하여 정확한 요금을 확인하세요</MomentSubTitle>
       </MomentTitleBox>
-      <MomentMoveBtn>
-        <button onClick={()=>{ setMoment(getMoment.clone().subtract(1, 'month'))}} className='moveBtn'>
-          <AiOutlineLeft />
-        </button>
-        <span>{today.format('YYYY 년 MM 월')}</span>
-        <button onClick={()=>{ setMoment(getMoment.clone().add(1, 'month')) }} className='moveBtn'>
-          <AiOutlineRight />
-        </button>
-      </MomentMoveBtn>
-      <MomentTable>
-        {arr.map((v,i) =>
-          <td key={i}>{v}</td>
-        )}
-        <tbody>
-        {calendarArr()}
+      <div className='towBox'>
+        <div className='one'>
+          <MomentMoveBtn>
+            <button onClick={()=>{ setMoment(getMoment.clone().subtract(1, 'month'))}} className='moveBtn'>
+              <AiOutlineLeft />
+            </button>
+            <span>{today.format('YYYY 년 MM 월')}</span>
+            <button onClick={()=>{ setMoment(getMoment.clone().add(1, 'month')) }} className='moveBtn'>
+              <AiOutlineRight />
+            </button>
+          </MomentMoveBtn>
+          <MomentTable>
+            {arr.map((v,i) =>
+              <td key={i}>{v}</td>
+            )}
+            <tbody>
+            {calendarArr()}
+            </tbody>
+          </MomentTable>
+        </div>
 
-        </tbody>
-      </MomentTable>
+      </div>
       <Clear>
         <BsKeyboard />
         <div>날짜 지우기</div>
@@ -92,6 +95,8 @@ const FlexBox = styled.div`
     border: none;
     background: #fff;
     cursor: pointer;
+  }
+  @media screen and (max-width: 1127px) {
   }
 `
 const MomentTitleBox = styled.div`

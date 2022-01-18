@@ -3,6 +3,8 @@ import DetailsTitle from './atoms/detailsTitle'
 import {PaddingBox} from '../../../components/common/styled'
 import DetailsImg from './atoms/detailsImg'
 import Announcement from './announcement'
+import HostPosition from './atoms/hostPosition'
+import ReView from './reView'
 
 const Details = () => {
   return (
@@ -10,6 +12,8 @@ const Details = () => {
       <DetailsTitle />
       <DetailsImg />
       <Announcement />
+      <ReView />
+      <HostPosition />
     </DetailsPaddingBox>
   )
 }
