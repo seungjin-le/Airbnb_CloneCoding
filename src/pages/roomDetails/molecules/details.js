@@ -21,6 +21,7 @@ const DetailsPaddingBox = styled(PaddingBox)`
   max-width: 1280px;
   margin: 0 auto;
   box-sizing: border-box;
+  
 `
 
 

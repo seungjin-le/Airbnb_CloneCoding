@@ -6,6 +6,8 @@ import {IoCardOutline} from 'react-icons/io5'
 import {GiPositionMarker} from 'react-icons/gi'
 import {useState} from 'react'
 import {GrClose} from 'react-icons/gr'
+import Amenities from './atoms/amenities'
+import CheckIn from './atoms/checkIn'
 
 const Announcement = () => {
   const [modal, setModal] = useState(false);
@@ -53,7 +55,7 @@ const Announcement = () => {
           1. Primium point
           - 신축 건물입니다...
 
-          <ExplainDetails onClick={modalClick}>더 보기<AiOutlineRight/></ExplainDetails>
+          <ExplainDetails onClick={modalClick}><span>더 보기<AiOutlineRight/></span></ExplainDetails>
           {modal ?
             <ModalBackGround onClick={modalClick}>
               <Modal>
@@ -96,6 +98,8 @@ const Announcement = () => {
             false
           }
         </ExplainBox>
+        <Amenities />
+        <CheckIn />
       </FlexLeft>
       <FlexRight>as</FlexRight>
     </FlexBox>
@@ -109,6 +113,7 @@ const FlexBox = styled.div`
   flex-wrap: nowrap;
   width: 100%;
   height: 100%;
+  border-bottom: 1px solid #ddd;
 `
 const FlexLeft = styled.div`
   display: flex;
@@ -157,11 +162,13 @@ const ExplainBox = styled.div`
   border-bottom: 1px solid #ddd;
 `
 const ExplainDetails = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   margin-top: 15px;
   text-decoration: underline;
+  & span{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
 `
 const ModalBackGround = styled.div`
   overflow: hidden;
@@ -173,7 +180,6 @@ const ModalBackGround = styled.div`
   height: 200vw;
   background: rgba(0,0,0,.5);
   z-index: 3;
-
 `
 const Modal = styled.div`
   border-radius: 15px;
