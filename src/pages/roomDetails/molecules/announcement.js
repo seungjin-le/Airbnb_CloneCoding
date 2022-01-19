@@ -8,6 +8,9 @@ import {useState} from 'react'
 import {GrClose} from 'react-icons/gr'
 import Amenities from './atoms/amenities'
 import CheckIn from './atoms/checkIn'
+import {BsFillStarFill} from 'react-icons/bs'
+import {IoIosArrowDown} from 'react-icons/io'
+
 
 const Announcement = () => {
   const [modal, setModal] = useState(false);
@@ -101,7 +104,35 @@ const Announcement = () => {
         <Amenities />
         <CheckIn />
       </FlexLeft>
-      <FlexRight>as</FlexRight>
+      <FlexRight>
+        <RemoteControl>
+          <RemoteControlTitle>요금을 확인하려면 날짜를</RemoteControlTitle>
+          <RemoteControlTitle>입력하세요</RemoteControlTitle>
+          <Score>
+            <BsFillStarFill/>
+            <span>4.90</span>
+            <span>.</span>
+            <span className='line'>후기 114개</span>
+          </Score>
+          <CheckBox>
+            <div>
+              <div className='checkIn'>
+                <div className='subText'>체크인</div>
+                <div className='mainText'>날짜 추가</div>
+              </div>
+              <div className='checkOut'>
+                <div className='subText'>체크아웃</div>
+                <div className='mainText'>날짜 추가</div>
+              </div>
+            </div>
+            <div className='user'>
+              <div className='subText'>인원</div>
+              <div className='mainText'>게스트 1명 <IoIosArrowDown /></div>
+            </div>
+          </CheckBox>
+          <RemoteControlBtn>예약 가능 여부 보기</RemoteControlBtn>
+        </RemoteControl>
+      </FlexRight>
     </FlexBox>
   )
 }
@@ -225,8 +256,89 @@ const FlexRight = styled.div`
   width: 100%;
   height: 100%;
   flex: 1.01;
-  background: pink;
   display: flex;
   justify-content: center;
 `
+const RemoteControl = styled.div`
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px
+`
+const RemoteControlTitle = styled.div`
+  font-size: 22px;
+  line-height: 26px;
+`
+const Score = styled.div`
+  margin-top: 10px;
+  color: rgb(34, 34, 34);
+  padding-left: 4px;
+  font-weight: 600;
+  font-size: 13px;
+  & svg {
+    margin-right: 5px;
+    font-size: 12px;
+    color: orangered;
+  }
+  & .line{
+    padding-left: 4px;
+    text-decoration: underline;
+  }
+`
+const CheckBox = styled.div`
+  width: 300px;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  & > div {
+    width: 100%;
+    display: flex;
+  }
+  & .checkIn{
+    border-right: 1px solid #ddd;
+  }
+  & .checkIn,
+  & .checkOut {
+    width: 100%;
+    padding: 5px 36px 10px 12px;
+  }
+  & .user{
+    border-top: 1px solid #ddd;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 5px 5px 10px 12px;
+  }
+  & .subText{
+    font-size: 10px;
+    line-height: 12px;
+    color: rgb(34, 34, 34);
+    font-weight: 600;
+  }
+  & .mainText{
+    font-size: 15px;
+    margin-top: 5px;
+    color: #717171;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    & svg{
+      font-size: 25px;
+    }
+  }
+`
+const RemoteControlBtn = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 200px;
+  background-size: 200% 200%;
+  text-align: center;
+  background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 8px;
+`
+
 export default Announcement;

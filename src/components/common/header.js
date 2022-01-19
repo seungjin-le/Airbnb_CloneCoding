@@ -5,20 +5,51 @@ import {AiOutlineMenu} from 'react-icons/ai'
 import {useEffect, useState} from 'react'
 import LoginMobal from '../../pages/login/loginMobal'
 import Search from '../../pages/home/molecules/search'
+import axios from 'axios'
+
 
 
 const Header = (props) => {
   const [onClick, setOnClick] = useState(false);
   const [userJoin, setUserJoin] = useState(false);
   const [scroll, setScroll] = useState(false);//50px
+  const [data, setData] = useState();
+  const [loginStatus, setLoginStatus] = useState(false);
+  const [userToken, setUserToken] = useState();
+  let token;
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll); //clean up
-
     };
   }, []);
+
+
+  useEffect(() => {
+    if(data){
+      axios.get(`https://dev.nada-risingcamp.shop/users/auto-login?token=${data}`).
+      then(res => setUserToken(res.data)).catch((err) => console.log(err))
+      console.log('성공')
+    }
+  }, [data]);
+
+
+  useEffect(() => {
+    setData(JSON.parse(localStorage.getItem("users")));
+    console.log(userToken)
+  },[])
+  const success = () => {
+    if(userToken){
+      setLoginStatus(true);
+    }else if(userToken){
+      setLoginStatus(false);
+    }
+  }
+  useEffect(() => {
+    success()
+  },[userToken])
+
   const pageUrl = document.location.href.split('http://localhost:3000/').join('');
   const handleScroll = () => {
     if(window.scrollY >= 50){
@@ -26,12 +57,16 @@ const Header = (props) => {
     }else{
       setScroll(false);
     }
-
   };
-
+  const logOutClick = () => {
+    localStorage.clear();
+    window.location.reload()
+    setLoginStatus(false);
+  }
   const toggleMenu = () => {
     setOnClick(onClick => !onClick);
   }
+
   const joinModal = () => {
     setUserJoin(userJoin => !userJoin);
     setOnClick(onClick => !onClick);
@@ -39,6 +74,7 @@ const Header = (props) => {
   const toggleState = () => {
     setUserJoin(userJoin => !userJoin);
   }
+
   return (
         <HeaderPaddingBox className={pageUrl === 'filter' ? 'filter' : false}>
           { userJoin ? <LoginMobal toggleState={toggleState} /> : false }
@@ -93,21 +129,36 @@ const Header = (props) => {
                     <path fill='#717171' d="m16 .7c-8.437 0-15.3 6.863-15.3 15.3s6.863 15.3 15.3 15.3 15.3-6.863 15.3-15.3-6.863-15.3-15.3-15.3zm0 28c-4.021 0-7.605-1.884-9.933-4.81a12.425 12.425 0 0 1 6.451-4.4 6.507 6.507 0 0 1 -3.018-5.49c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5a6.513 6.513 0 0 1 -3.019 5.491 12.42 12.42 0 0 1 6.452 4.4c-2.328 2.925-5.912 4.809-9.933 4.809z" /></svg>
                 </UserBtnBox>
                 {onClick ?
-                  <DropdownMenu>
-                    <ListItem
-                      style={{
-                        borderTopLeftRadius:'10px',
-                        borderTopRightRadius:'10px',
-                        fontWeight:'400'}}
-                      onClick={joinModal}
-                    >회원가입</ListItem>
-                    <ListItem onClick={joinModal}>로그인</ListItem>
-                    <span style={{borderBottom:'1px solid #333',margin:'3px 0'}}></span>
-                    <ListItem>숙소 호스트 되기</ListItem>
-                    <ListItem>체험 호스팅하기</ListItem>
-                    <ListItem style={{borderBottomLeftRadius:'10px', borderBottomRightRadius:'10px'}}>도움말</ListItem>
-                  </DropdownMenu> :
-                  false
+                    <DropdownMenu>
+                      {loginStatus ?
+                        <div>
+                          <ListItem>메시지</ListItem>
+                          <ListItem>알림</ListItem>
+                          <ListItem>위시리스트</ListItem>
+                          <span style={{borderBottom: '1px solid #ddd', margin: '3px 0'}}></span>
+                          <ListItem>숙소 관리</ListItem>
+                          <ListItem>체험 관리</ListItem>
+                          <ListItem>계정</ListItem>
+                          <span style={{borderBottom: '1px solid #ddd', margin: '3px 0'}}></span>
+                          <ListItem>도움말</ListItem>
+                          <ListItem onClick={logOutClick}>로그아웃</ListItem>
+                        </div>
+                        :
+                        <div>
+                          <ListItem
+                            style={{
+                              borderTopLeftRadius: '10px',
+                              borderTopRightRadius: '10px',
+                              fontWeight: '400'
+                            }} onClick={joinModal}>회원가입</ListItem>
+                          <ListItem onClick={joinModal}>로그인</ListItem>
+                          <span style={{borderBottom: '1px solid #333', margin: '3px 0'}}></span>
+                          <ListItem>숙소 호스트 되기</ListItem>
+                          <ListItem>체험 호스팅하기</ListItem>
+                          <ListItem style={{borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'}}>도움말</ListItem>
+                        </div>
+                      }
+                    </DropdownMenu> : false
                 }
               </DropdownMenuBox>
             </UserBox>
@@ -282,6 +333,11 @@ const DropdownMenu = styled.ul`
   background: #fff;
   z-index: 2;
   border: 1px solid rgba(0, 0, 0, 0.08);
+  & > div{
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+  }
 `
 const ListItem = styled.li`
   padding: 12px 16px 12px 16px;

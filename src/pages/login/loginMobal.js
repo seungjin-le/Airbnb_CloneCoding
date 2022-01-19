@@ -5,15 +5,64 @@ import {IoLogoFacebook} from 'react-icons/io'
 import {FcGoogle} from 'react-icons/fc'
 import {AiFillApple, AiOutlineMail} from 'react-icons/ai'
 import {useState} from 'react'
+import axios from 'axios'
 
 const LoginMobal = ({ toggleState }) => {
   const [emailLogin, setEmailLogin] = useState(false);
+  const [loginStatus, setLoginStatus] = useState(false);
+  const [passwordLogin, setPasswordLogin] = useState('');
+
+  const testEmail = 'alskek27@gmail.com'
+  const testPassword = 'password'
+
+  let jwt;
+  let userId;
+
+
   const emailLoginClick = () => {
     setEmailLogin(emailLogin => !emailLogin);
   }
   const onClick = () => {
     toggleState(toggle => !toggle)
   }
+  const emailClick = () => {
+    // const email = document.getElementById('emailInput')
+    // email.value = '';
+
+    axios.post('https://dev.nada-risingcamp.shop/users/login',
+      {
+        email: testEmail,
+        password:testPassword
+      },
+      {
+        headers: {
+          'Content-type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }
+    ).then((response) => {
+      console.log(response.data);
+      if(response.data.code === 1000){
+        jwt = response.data.result.jwt;
+        userId = response.data.result.userId;
+        const userInfo = jwt;
+        window.localStorage.setItem('users',JSON.stringify((userInfo)));
+        window.location.reload()
+      }
+    })
+      .catch((response) => {
+        console.log('Error!',response)
+      })
+  }
+
+  const passwordClick = () => {
+    const password = document.getElementById('passwordInput')
+    password.value = '';
+
+  }
+//{ loginStatus ? <PhoneNumber type='password' placeholder='비밀번호' id='passwordInput'/> :
+//
+//               }
   return (
     <ModalBackground>
       <JoinModalBox>
@@ -27,7 +76,8 @@ const LoginMobal = ({ toggleState }) => {
           <WelcomeMsg>에어비앤비에 오신것을 환영합니다.</WelcomeMsg>
           {emailLogin ?
             <FormBox>
-              <PhoneNumber type='email' placeholder='이메일' />
+              <PhoneNumber type='email' placeholder='이메일' id='emailInput'/>
+              <PhoneNumber type='password' placeholder='비밀번호' id='emailInput'/>
             </FormBox> :
             <FormBox>
               <NationForm>
@@ -41,7 +91,7 @@ const LoginMobal = ({ toggleState }) => {
             </FormBox>
           }
           <SubText>전화나 문자로 전화번호를 확인하겟습니다. 일반 문자 메시지 여금 및 데이터 요금이 부과됩니다.<Link to='/'> 개인정보 처리방침</Link></SubText>
-          <LoginBtn>계속</LoginBtn>
+          <LoginBtn onClick={emailClick}>계속</LoginBtn>
           <AndLineBox><Line/><span>또는</span><Line/></AndLineBox>
           <SocialLoginBtn>
             <IoLogoFacebook style={{color:'dodgerblue'}}/>
@@ -64,6 +114,10 @@ const LoginMobal = ({ toggleState }) => {
     </ModalBackground>
   );
 }
+//{loginStatus ?
+//             <LoginBtn onClick={passwordClick}>로그인</LoginBtn> :
+//             <LoginBtn onClick={emailClick}>계속</LoginBtn>
+//           }
 const ModalBackground = styled.div`
   position: absolute;
   top: 0;
@@ -198,18 +252,30 @@ const LoginBtn = styled.div`
   align-items: center;
   justify-content: center;
   min-width: 200px;
-  transition: opacity 1.25s ease 0s;
-  margin-bottom: 24px;
-  margin-top: 16px;
+  transition: .3s;
+  margin: 16px auto 24px;
   color: #fff;
   border-radius: 8px;
   background: radial-gradient(circle at center center,
-    rgb(255, 56, 92) 0%, 
-    rgb(230, 30, 77) 27.5%, 
-    rgb(227, 28, 95) 40%, 
-    rgb(215, 4, 102) 57.5%,
-    rgb(189, 30, 89) 75%,
-    rgb(189, 30, 89) 100%)
+  rgb(255, 56, 92) 0%,
+  rgb(230, 30, 77) 27.5%,
+  rgb(227, 28, 95) 40%,
+  rgb(215, 4, 102) 57.5%,
+  rgb(189, 30, 89) 75%,
+  rgb(189, 30, 89) 100%);
+
+  &:active {
+    margin: 16px auto 24px;
+    width: 90%;
+    background: radial-gradient(circle at center center,
+    rgb(255, 56, 92) 40%,
+    rgb(255, 56, 92) 40%,
+    rgb(255, 56, 92) 40%,
+    rgb(255, 56, 92) 40%,
+    rgb(255, 56, 92) 40%,
+    rgb(255, 56, 92) 40%);
+
+  }
 `
 
 const AndLineBox = styled.div`
