@@ -9,6 +9,7 @@ import axios from 'axios'
 
 
 
+
 const Header = (props) => {
   const [onClick, setOnClick] = useState(false);
   const [userJoin, setUserJoin] = useState(false);
@@ -16,7 +17,6 @@ const Header = (props) => {
   const [data, setData] = useState();
   const [loginStatus, setLoginStatus] = useState(false);
   const [userToken, setUserToken] = useState();
-  let token;
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -111,7 +111,7 @@ const Header = (props) => {
             }
             <UserBox className={props.filterPage === 'filterPage' ? 'filter' : false}>
               {props.page === 'search' ?
-                <HostStartBox style={{color:'#222'}}>호스트 되기</HostStartBox> :
+                <HostStartBox className='loginStatus' style={{color:'#222'}}>{loginStatus ? '호스트 모드로 전환' : '호스트 되기'}</HostStartBox> :
                 <HostStartBox className={scroll ? 'true' : 'false'}>호스트 되기</HostStartBox>
               }
               <LanguageBox>
@@ -138,7 +138,7 @@ const Header = (props) => {
                           <span style={{borderBottom: '1px solid #ddd', margin: '3px 0'}}></span>
                           <ListItem>숙소 관리</ListItem>
                           <ListItem>체험 관리</ListItem>
-                          <ListItem>계정</ListItem>
+                          <ListItem><Link to='/account'>계정</Link></ListItem>
                           <span style={{borderBottom: '1px solid #ddd', margin: '3px 0'}}></span>
                           <ListItem>도움말</ListItem>
                           <ListItem onClick={logOutClick}>로그아웃</ListItem>
@@ -281,6 +281,10 @@ const HostStartBox = styled.div`
   overflow: visible;
   padding: 12px;
   text-align: inherit;
+  &.loginStatus:hover{
+    border-radius: 25px;
+    background: rgba(200,200,200,.3);
+  }
 `
 const LanguageBox = styled.div`
   display: inline-block;
