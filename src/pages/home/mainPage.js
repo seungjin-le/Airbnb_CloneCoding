@@ -9,6 +9,10 @@ import HostingSection from './molecules/hostingSection'
 import Footer from '../../components/common/footer'
 
 const MainPage = () => {
+
+
+
+
   return (
     <Page>
       <FirstSection>

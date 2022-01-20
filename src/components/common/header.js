@@ -24,8 +24,6 @@ const Header = (props) => {
       window.removeEventListener('scroll', handleScroll); //clean up
     };
   }, []);
-
-
   useEffect(() => {
     if(data){
       axios.get(`https://dev.nada-risingcamp.shop/users/auto-login?token=${data}`).
@@ -33,8 +31,6 @@ const Header = (props) => {
       console.log('성공')
     }
   }, [data]);
-
-
   useEffect(() => {
     setData(JSON.parse(localStorage.getItem("users")));
     console.log(userToken)
@@ -66,7 +62,6 @@ const Header = (props) => {
   const toggleMenu = () => {
     setOnClick(onClick => !onClick);
   }
-
   const joinModal = () => {
     setUserJoin(userJoin => !userJoin);
     setOnClick(onClick => !onClick);
@@ -74,6 +69,7 @@ const Header = (props) => {
   const toggleState = () => {
     setUserJoin(userJoin => !userJoin);
   }
+
 
   return (
         <HeaderPaddingBox className={pageUrl === 'filter' ? 'filter' : false}>
@@ -165,7 +161,7 @@ const Header = (props) => {
           </HeaderBox>
           {props.page === 'search' ?
             false :
-            <Search move={scroll} />
+            <Search move={scroll} token={data}/>
           }
         </HeaderPaddingBox>
     )

@@ -21,7 +21,7 @@ const RootRoute = () => {
 
               {/* 추가되는 페이지 */}
               <Route path='/search' component={SearchPage} exact key="SearchPage" />
-              <Route path='/filter' component={FilterPage} exact key="FilterPage" />
+              <Route path='/filter' component={FilterPage} key="FilterPage" />
               <Route path='/roomDetails' component={RoomDetails} exact key="RoomDetails" />
               <Route path='/account' component={Account} exact key="Account" />
               <Route path='/information' component={Information} exact key="Information" />

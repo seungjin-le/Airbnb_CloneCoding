@@ -12,11 +12,33 @@ const LoginMobal = ({ toggleState }) => {
   const [loginStatus, setLoginStatus] = useState(false);
   const [passwordLogin, setPasswordLogin] = useState('');
 
-  const testEmail = 'alskek27@gmail.com'
-  const testPassword = 'password'
+
 
   let jwt;
   let userId;
+
+  let userEmail;
+  let userPassword;
+  let userName;
+  let userDate;
+  let userFirstName;
+
+  const emailChange = (e) => {
+    userEmail = e.target.value;
+  }
+  const pwChange = (e) => {
+    userPassword = e.target.value;
+  }
+  const dateChange = (e) => {
+    userDate = e.target.value;
+  }
+  const nameChange = (e) => {
+    userName = e.target.value;
+  }
+  const firstNameChange = (e) => {
+    userFirstName = e.target.value;
+  }
+
 
 
   const emailLoginClick = () => {
@@ -26,13 +48,14 @@ const LoginMobal = ({ toggleState }) => {
     toggleState(toggle => !toggle)
   }
   const emailClick = () => {
-    // const email = document.getElementById('emailInput')
-    // email.value = '';
-
+    const email = userEmail;
+    const password = userPassword;
+    const testEmail = 'alskek27@gmail.com'
+    const testPassword = 'password'
     axios.post('https://dev.nada-risingcamp.shop/users/login',
       {
-        email: testEmail,
-        password:testPassword
+        email: email,
+        password: password
       },
       {
         headers: {
@@ -49,68 +72,119 @@ const LoginMobal = ({ toggleState }) => {
         window.localStorage.setItem('users',JSON.stringify((userInfo)));
         window.location.reload()
       }
+      if(response.data.code === 3002){
+        setLoginStatus(true);
+      }
     })
       .catch((response) => {
         console.log('Error!',response)
+
       })
   }
 
-  const passwordClick = () => {
-    const password = document.getElementById('passwordInput')
-    password.value = '';
+  const joinClick = () => {
+    axios.post('https://dev.nada-risingcamp.shop/users/sign-up',
+      {
+        firstName:userFirstName,
+        lastName:userName,
+        birth:userDate,
+        email: userEmail,
+        password: userPassword
+      },
+      {
+        headers: {
+          'Content-type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }
+    ).then((response) => {
+      console.log(response.data);
+      window.location.reload()
+    }).catch((response) => {
+        console.log('Error!',response)
 
+      })
   }
-//{ loginStatus ? <PhoneNumber type='password' placeholder='비밀번호' id='passwordInput'/> :
-//
-//               }
+
   return (
     <ModalBackground>
-      <JoinModalBox>
-        <ModalTitleBox>
-          <CloseIconBox onClick={onClick}>
-            <GrClose/>
-          </CloseIconBox>
-          <ModalTitleText>로그인 또는 회원 가입</ModalTitleText>
-        </ModalTitleBox>
-        <LoginForm>
-          <WelcomeMsg>에어비앤비에 오신것을 환영합니다.</WelcomeMsg>
-          {emailLogin ?
+      {loginStatus ?
+        <JoinModalBox>
+          <ModalTitleBox>
+            <CloseIconBox onClick={onClick}>
+              <GrClose/>
+            </CloseIconBox>
+            <ModalTitleText>회원 가입 완료하기</ModalTitleText>
+          </ModalTitleBox>
+          <LoginForm>
+              <FormBox>
+                <PhoneNumber type='text' placeholder='이름(예: 홍길동)' onChange={nameChange}/>
+                <PhoneNumber type='text' placeholder='성(예: 홍)' onChange={firstNameChange}/>
+              </FormBox>
+            <div className='joinSubText'>정부 발급 신분증에 펴시된 이름과 일치하는지 확인하세요</div>
             <FormBox>
-              <PhoneNumber type='email' placeholder='이메일' id='emailInput'/>
-              <PhoneNumber type='password' placeholder='비밀번호' id='emailInput'/>
-            </FormBox> :
-            <FormBox>
-              <NationForm>
-                <option value="한국">한국</option>
-                <option value="중국">중국</option>
-                <option value="마국">미국</option>
-                <option value="일본">일본</option>
-                <option value="러시아">러시아</option>
-              </NationForm>
-              <PhoneNumber type='text' placeholder='전화번호' />
+              <PhoneNumber type='date' placeholder='생년월일' onChange={dateChange}/>
             </FormBox>
-          }
-          <SubText>전화나 문자로 전화번호를 확인하겟습니다. 일반 문자 메시지 여금 및 데이터 요금이 부과됩니다.<Link to='/'> 개인정보 처리방침</Link></SubText>
-          <LoginBtn onClick={emailClick}>계속</LoginBtn>
-          <AndLineBox><Line/><span>또는</span><Line/></AndLineBox>
-          <SocialLoginBtn>
-            <IoLogoFacebook style={{color:'dodgerblue'}}/>
-            <span>페이스북으로 로그인하기</span>
-          </SocialLoginBtn>
-          <SocialLoginBtn>
-            <FcGoogle />
-            <span>구글로 로그인하기</span>
-          </SocialLoginBtn>
-          <SocialLoginBtn>
-            <AiFillApple style={{color:'#333'}}/>
-            <span>Apple 계정으로 로그인하기</span>
-          </SocialLoginBtn>
-          <SocialLoginBtn style={{marginBottom:'0px'}} onClick={emailLoginClick}>
-            <AiOutlineMail />
-            <span>이메일로 로그인하기</span>
-          </SocialLoginBtn>
-        </LoginForm>
-      </JoinModalBox>
+            <div className='joinSubText'>만 19세 이상의 성인만 회원ㅇ로 가입할 수 있습니다 생일은 에어비앤비의 ㅏ른 회원에게 공개되지 않습니다</div>
+            <FormBox>
+              <PhoneNumber type='email' placeholder='이메일' onChange={emailChange}/>
+            </FormBox>
+            <div className='joinSubText'>예약 확인과 영수증을 이메일로 보내드립니다.</div>
+            <FormBox>
+              <PhoneNumber type='password' placeholder='비밀번호' onChange={pwChange}/>
+            </FormBox>
+            <div className='texts'><span>동의 및 계속</span>하기 버튼을 선택하면 에어비앤비 <span>서비스 약관, 결제 서비스 약관</span> 및 <span>차별 금지 정책</span>에 동의하며 개인정보 처리방침 정책을 이해하는 것입니다.</div>
+            <LoginBtn onClick={joinClick}>계속</LoginBtn>
+          </LoginForm>
+        </JoinModalBox>
+        :
+        <JoinModalBox>
+          <ModalTitleBox>
+            <CloseIconBox onClick={onClick}>
+              <GrClose/>
+            </CloseIconBox>
+            <ModalTitleText>로그인 또는 회원 가입</ModalTitleText>
+          </ModalTitleBox>
+          <LoginForm>
+            <WelcomeMsg>에어비앤비에 오신것을 환영합니다.</WelcomeMsg>
+            {emailLogin ?
+              <FormBox>
+                <PhoneNumber type='email' placeholder='이메일' id='emailInput' onChange={emailChange}/>
+                <PhoneNumber type='password' placeholder='비밀번호' id='emailInput' onChange={pwChange}/>
+              </FormBox> :
+              <FormBox>
+                <NationForm>
+                  <option value="한국">한국</option>
+                  <option value="중국">중국</option>
+                  <option value="마국">미국</option>
+                  <option value="일본">일본</option>
+                  <option value="러시아">러시아</option>
+                </NationForm>
+                <PhoneNumber type='text' placeholder='전화번호' />
+              </FormBox>
+            }
+            <SubText>전화나 문자로 전화번호를 확인하겟습니다. 일반 문자 메시지 여금 및 데이터 요금이 부과됩니다.<Link to='/'> 개인정보 처리방침</Link></SubText>
+            <LoginBtn onClick={emailClick}>계속</LoginBtn>
+            <AndLineBox><Line/><span>또는</span><Line/></AndLineBox>
+            <SocialLoginBtn>
+              <IoLogoFacebook style={{color:'dodgerblue'}}/>
+              <span>페이스북으로 로그인하기</span>
+            </SocialLoginBtn>
+            <SocialLoginBtn>
+              <FcGoogle />
+              <span>구글로 로그인하기</span>
+            </SocialLoginBtn>
+            <SocialLoginBtn>
+              <AiFillApple style={{color:'#333'}}/>
+              <span>Apple 계정으로 로그인하기</span>
+            </SocialLoginBtn>
+            <SocialLoginBtn style={{marginBottom:'0px'}} onClick={emailLoginClick}>
+              <AiOutlineMail />
+              <span>이메일로 로그인하기</span>
+            </SocialLoginBtn>
+          </LoginForm>
+        </JoinModalBox>
+      }
     </ModalBackground>
   );
 }
@@ -182,6 +256,31 @@ const LoginForm = styled.div`
   border-bottom-right-radius: 10px;
   padding: 24px;
   box-sizing: border-box;
+  & .joinSubText{
+    display: flex;
+    color: rgb(113, 113, 113);
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    margin-top: 5px;
+  }
+  & .texts{
+    font-size: 12px;
+    line-height: 16px;
+    color: rgb(113, 113, 113);
+    margin: 20px 0;
+    & span{
+      color: rgb(0, 76, 196);
+      text-decoration: underline;
+      border-radius: 4px;
+      font-weight: 600;
+      outline: none;
+      &:first-child{
+        color: #717171;
+      }
+    }
+    
+  }
 `
 const WelcomeMsg = styled.div`
   font-size: 22px;
@@ -197,6 +296,7 @@ const FormBox = styled.div`
   flex-direction: column;
   border: 2px solid rgba(0,0,0, .2);
   border-radius: 8px;
+  
 `
 const NationForm = styled.select`
   height: 56px;

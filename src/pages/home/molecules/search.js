@@ -1,20 +1,39 @@
 import styled from 'styled-components'
 import {PaddingBox} from '../../../components/common/styled'
 import {BiSearch} from 'react-icons/bi'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+import {Link} from 'react-router-dom'
+import axios from 'axios'
 
-const Search = ({move}) => {
-
+const Search = ({move, token}) => {
+  let text;
+  const [data, setData] = useState();
   const [searchClick, setSearchClick] = useState(false);
   const searchIcon = () => {
     setSearchClick(search => !search);
-    if(!move){
-      moveFilterPage()
+    search()
+  }
+
+
+
+  const search = () => {
+    if(text) {
+      axios.get(`https://dev.nada-risingcamp.shop/rooms?location=${text}&token=${token}`)
+        .then(res => setData(res.data.result))
+        .catch(err => console.log(err))
+        moveFilterPage()
     }
   }
-  const pageUrl = document.location.href.split('http://localhost:3000/').join('');
+  const searchChange = (e) => {
+    text = e.target.value;
+
+  }
+
   const moveFilterPage = () => {
-    window.location.href='/filter'
+    setTimeout(() => {
+      let filterPage ='/filter/'+text
+      window.location.href= `${filterPage}`
+    },1000)
   }
 
 
@@ -30,7 +49,7 @@ const Search = ({move}) => {
             }
             <SearchItem className='position'>
               <ItemTitle className='positionTitle'>위치</ItemTitle>
-              <PositionInput placeholder='어디로 여행가세요?' type='text'></PositionInput>
+              <PositionInput placeholder='어디로 여행가세요?' type='text' onChange={searchChange}/>
             </SearchItem>
             <ItemLine className='one'/>
             <SearchItem className='checkIn'>
@@ -48,6 +67,7 @@ const Search = ({move}) => {
               <ItemText>게스트 추가</ItemText>
             </SearchItem>
             <SearchIconBox onClick={searchIcon} className={searchClick ? 'true' : 'false'}>
+              <Link to={`/`} className='searchLink'>
               {move ?
                 <BiSearch style={{fontSize:'14px', padding:'0'}} /> :
                 <BiSearch />
@@ -57,7 +77,7 @@ const Search = ({move}) => {
                   검색
                 </div>
               }
-
+              </Link>
             </SearchIconBox>
           </BoxItemList>
         </SearchBox>
@@ -130,6 +150,7 @@ const BoxItemList = styled.div`
     font-size: 14px;
     line-height: 18px;
   }
+  
 `
 const SearchItem = styled.div`
   display: flex;
@@ -217,6 +238,11 @@ const SearchIconBox = styled.div`
     font-weight: 600;
     color: #fff;
     margin-left: 5px;
+  }
+  & .searchLink{
+    display: flex;
+    width: 100%;
+    height: 100%;
   }
 `
 const ItemLine = styled.span`

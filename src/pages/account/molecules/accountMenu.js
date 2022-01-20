@@ -13,8 +13,6 @@ const AccountMenu = ({userToken}) => {
     }
   }, [userToken]);
 
-  console.log(users)
-
   return(
     <FlexBox>
       <MarginBox>
