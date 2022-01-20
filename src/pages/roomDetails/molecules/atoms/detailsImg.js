@@ -1,34 +1,55 @@
 import styled from 'styled-components'
+import {useEffect, useState} from 'react'
+import axios from 'axios'
 
-const DetailsImg = () => {
+const DetailsImg = ({data,id}) => {
+
+  const [Token, setToken] = useState();
+
+
+  useEffect(() => {
+    if (data) {
+      axios.get(`https://dev.nada-risingcamp.shop/rooms/${id}/contents?token=${data}`)
+        .then(res => setToken(res.data.result.roomImages))
+        .catch((err) => console.log(err)).catch(err => console.log(err))
+      console.log(Token)
+    }
+  }, [data]);
+
+
   return (
     <ImgBox>
-      <MainImg>
-        <div />
-        <img src="https://a0.muscache.com/im/pictures/2ae45f5d-0c2e-4af9-af97-c4aa4d388e89.jpg?im_w=720" alt=""/>
-      </MainImg>
+      {Token ?
+        <MainImg>
+          <div/>
+          <img src={Token[0].roomImgUrl} alt=""/>
+        </MainImg> : <div></div>
+      }
+      {Token ?
       <SubImgBox>
         <ImgFlexBox>
           <SubImg>
             <ImgShadow />
-            <img src="https://a0.muscache.com/im/pictures/c808c50e-3062-4012-a2d6-81e65e14ace6.jpg?im_w=720" alt=""/>
+            <img src={Token[1].roomImgUrl} alt=""/>
           </SubImg>
           <SubImg>
             <ImgShadow />
-            <img src="https://a0.muscache.com/im/pictures/dc16d045-5ff6-4363-88b9-44a766e70694.jpg?im_w=720" alt=""/>
+            <img src={Token[2].roomImgUrl} alt=""/>
           </SubImg>
         </ImgFlexBox>
         <ImgFlexBox>
           <SubImg>
             <ImgShadow className='first'/>
-            <img src="https://a0.muscache.com/im/pictures/1a2ef9ab-dbf4-4199-9ac2-cf7be8dc7863.jpg?im_w=720" alt="" className='first'/>
+            <img src={Token[3].roomImgUrl} alt="" className='first'/>
           </SubImg>
           <SubImg>
             <ImgShadow className='last'/>
-            <img src="https://a0.muscache.com/im/pictures/bbacd221-1388-4ae2-b605-d0bf4f26fb22.jpg?im_w=720" alt="" className='last'/>
+            <img src={Token[4].roomImgUrl} alt="" className='last'/>
           </SubImg>
         </ImgFlexBox>
-      </SubImgBox>
+      </SubImgBox> :
+        <div></div>
+      }
     </ImgBox>
   )
 }

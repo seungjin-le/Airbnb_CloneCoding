@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import {PaddingBox} from '../../../components/common/styled'
 import {BiSearch} from 'react-icons/bi'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 
@@ -19,7 +19,7 @@ const Search = ({move, token}) => {
   const search = () => {
     if(text) {
       axios.get(`https://dev.nada-risingcamp.shop/rooms?location=${text}&token=${token}`)
-        .then(res => setData(res.data.result))
+        .then(res => console.log(res.data.result))
         .catch(err => console.log(err))
         moveFilterPage()
     }

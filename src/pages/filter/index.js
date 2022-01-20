@@ -6,13 +6,14 @@ import Footer from '../../components/common/footer'
 import RoomList from './molecules/roomList'
 
 const FilterPage = () => {
-  const pageUrl = window.location.href.split('http://localhost:3000/');
-  console.log(pageUrl)
+  let pageUrl = window.location.href.split('http://localhost:3000/filter/');
+  pageUrl.shift()
+  let url = decodeURI(pageUrl);
   return(
     <Page>
       <Header page={'search'} filterPage={'filterPage'}/>
       <FilterList />
-      <RoomList />
+      <RoomList searchUrl={url}/>
       <Footer />
     </Page>
   );

@@ -3,39 +3,66 @@ import {IoMdHeartEmpty} from 'react-icons/io'
 import {RiStarSFill} from 'react-icons/ri'
 import {Link} from 'react-router-dom'
 
-const RoomListItem = () => {
+const RoomListItem = ({roomData}) => {
+  console.log(roomData)
+
+
+  const moveDetailsPage = () => {
+    setTimeout(() => {
+      let DetailsPage ='/roomDetails/'+roomData.roomId
+      window.location.href= `${DetailsPage}`
+    },1000)
+  }
+
   return (
     <ItemBox>
       <ImgBox>
-        <Link to={'/roomDetails'}>
+        <Link to={'#'} onClick={moveDetailsPage}>
           <SuperHostBtn>슈퍼호스트</SuperHostBtn>
           <img src="https://a0.muscache.com/im/pictures/2ae45f5d-0c2e-4af9-af97-c4aa4d388e89.jpg?im_w=720" alt=""/>
         </Link>
       </ImgBox>
       <TextBox>
-        <Link to={'/roomDetails'} >
-        <div className='box'>
-          <TitleBox>
-            <Title>
-              <div>Oncheon 1(il)-dong, Yuseong-gu의 공동 주택 전체</div>
-              <div>[유성온천역 3분] 더 팰리스1 - 프리미엄 에어비엔비 the Palace primium</div>
-            </Title>
-            <IconBox>
-              <IoMdHeartEmpty/>
-            </IconBox>
-          </TitleBox>
-          <span className='line'/>
-          <SubText>최대 인원 3명 · 침대1 개 · 욕실 1개</SubText>
-          <SubText>무료 주차 공간 · 주방 · 무선 인터넷 · 난방</SubText>
-        </div>
+        <Link to={'#'} onClick={moveDetailsPage}>
+          {roomData ?
+            <div className='box'>
+              <TitleBox>
+                <Title>
+                  <div>{roomData.location} {roomData.type}</div>
+                  <div>{roomData.title}</div>
+                </Title>
+                <IconBox>
+                  <IoMdHeartEmpty/>
+                </IconBox>
+              </TitleBox>
+              <span className='line'/>
+              <SubText>최대 인원 {roomData.maxPeople}명 · 침대 {roomData.bedroomNum}개 · 욕실 {roomData.bathroomNum}개</SubText>
+              <SubText>{roomData.amenities}</SubText>
+            </div> :
+            <div className='box'>
+              <TitleBox>
+                <Title>
+                  <div>{roomData.location} {roomData.type}</div>
+                  <div>{roomData.title}</div>
+                </Title>
+                <IconBox>
+                  <IoMdHeartEmpty/>
+                </IconBox>
+              </TitleBox>
+              <span className='line'/>
+              <SubText>최대 인원 {roomData.maxPeople}명 · 침대 {roomData.bedroomNum}개 · 욕실 {roomData.bathroomNum}개</SubText>
+              <SubText>{roomData.amenities}</SubText>
+            </div>
+          }
         </Link>
+        {roomData ?
         <RatingsBox>
-          <Link to={'/roomDetails'} >
+          <Link to={'#'} onClick={moveDetailsPage}>
           <RiStarSFill />
-          <RatingsNum>4.90</RatingsNum>
-          <RatingsText>(후기 114개)</RatingsText>
+          <RatingsNum>{roomData.reviewGrade}</RatingsNum>
+          <RatingsText>(후기 {roomData.reviewCount}개)</RatingsText>
           </Link>
-        </RatingsBox>
+        </RatingsBox> : false}
       </TextBox>
     </ItemBox>
   )
@@ -115,7 +142,7 @@ const Title = styled.div`
     overflow: hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
-    
+    text-decoration: none;
   }
   & div:first-child{
     font-size: 14px;

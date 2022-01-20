@@ -4,28 +4,46 @@ import {AiOutlineHome,AiOutlineRight} from 'react-icons/ai'
 import {MdCleaningServices} from 'react-icons/md'
 import {IoCardOutline} from 'react-icons/io5'
 import {GiPositionMarker} from 'react-icons/gi'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {GrClose} from 'react-icons/gr'
 import Amenities from './atoms/amenities'
 import CheckIn from './atoms/checkIn'
 import {BsFillStarFill} from 'react-icons/bs'
 import {IoIosArrowDown} from 'react-icons/io'
+import axios from 'axios'
 
 
-const Announcement = () => {
+const Announcement = ({data,id}) => {
   const [modal, setModal] = useState(false);
   const modalClick = () => {
     setModal( modal => !modal)
-    console.log(modal)
   }
+  const [loding, setLoding] = useState(false);
+  const [announcement, setAnnouncement] = useState();
+
+  console.log(announcement)
+  useEffect(() => {
+    if (data) {
+      axios.get(`https://dev.nada-risingcamp.shop/rooms/${id}/contents?token=${data}`)
+        .then(res => setAnnouncement(res.data.result.roomInfo[0]))
+        .catch((err) => console.log(err)).catch(err => console.log(err))
+      console.log(announcement)
+    }
+  }, [data]);
+  setTimeout(() => {
+    setLoding(true)
+  }, 1500)
+
+
+
   return (
     <FlexBox>
-      <FlexLeft>
+      {loding ? <FlexLeft>
         <UserImgBox>
-        <div>
-          <Title>나은님이 호스팅 하는 공동 주택 전체</Title>
-          <SubTitle>최대 인원 3명 · 침실 1개 · 침대 1개 · 욕실 1개</SubTitle>
-        </div>
+          <div>
+            <Title>나은님이 호스팅 하는 공동 주택 전체</Title>
+            <SubTitle>최대 인원 {announcement.maxPeople}명 · 침실 {announcement.bedroomNum}개 · 침대 {announcement.bedNum}개 · 욕실 {announcement.bathroomNum}개</SubTitle>
+          </div>
           <UserImg><img src="https://a0.muscache.com/im/pictures/user/ac6ea835-287f-46f5-a573-55a14024ef08.jpg?im_w=240" alt=""/>
           </UserImg>
         </UserImgBox>
@@ -52,10 +70,10 @@ const Announcement = () => {
           </Benefit>
         </BenefitBox>
         <ExplainBox>
-          새롭게 오픈한 더 팰리스에 방문해주셔서 감사합니다. <br/>
-          더 팰리스는 프리미엄 에어비엔비로 고품격 서비스를 추구하고 있으며, 방문하시는 모든 분들께 더없는 만족감을 드리기 위해 최선을 다하겠습니다.
-          <br/><br/>
-          1. Primium point
+          {announcement ?
+            <span>{announcement.description}</span> :
+            <div></div>
+          }
           - 신축 건물입니다...
 
           <ExplainDetails onClick={modalClick}><span>더 보기<AiOutlineRight/></span></ExplainDetails>
@@ -70,27 +88,14 @@ const Announcement = () => {
                   <div className='text'>
                     <div>
                       <div>
-                        <span>새롭게 오픈한 더 팰리스에 방문해주셔서 감사합니다.
-                          <br/>더 팰리스는 프리미엄 에어비엔비로 고품격 서비스를 추구하고 있으며, 방문하시는 모든 분들께 더없는 만족감을 드리기 위해 최선을 다하겠습니다.
-                          <br/><br/>1. Primium point<br/> - 신축 건물입니다.<br/> - 넷플릭스, 유튜브 프리미엄을 50인치 텔레비전에서 볼수 있습니다.<br/> - 퀸 사이즈의 최고급 수입 침대에서  편안하게 잠들 수 있습니다.
-                            <br/> - 암막 블라인드가 설치되어 늦은 시간까지 포근하게 쉴 수 있습니다.
-                            <br/> - 매번 침구류를 교체하며, 청결을 위해 최선을 다하고 있습니다.
-                            <br/> - 공기청정기가 있어 공기가 나빠도 쾌적하게 지낼 수 있습니다.
-                            <br/> - 정수기가 설치되어 무겁게 물을 사오시지 않아도 됩니다.
-                            <br/> - 네스프레소 커피머신, 믹스 커피, 드립 커피로 향긋한 아침을 누릴 수 있습니다.
-                            <br/> - 두 종류의 시리얼과 신선한 우유를 조식으로 제공하고 있습니다.<br/> - 두툼하고 뽀송뽀송한 호텔 수건을 매일 2개/1인 씩 제공합니다.
-                        </span>
-                        <div style={{margin:'24px 0'}}>
-                          <div><h3 style={{fontSize:'20px'}}>숙소</h3></div>
-                          <span>1. 더 팰리스의 위치<br/> - 유성온천역 6분 출구에서 도보 3~4분 거리에 위치하고 있습니다.<br/> - 유성의 가장 핫플레이스인 봉리단길에서 3~4분 거리에 위치하고 있습니다.</span>
-                        </div>
                         <div>
-                          <div><h3>게스트 이용 가능 공간/시설</h3></div>
-                          <span>더 팰리스는 다음의 편의시설을 포함하고 있습니다.<br /><br />1. 거실<br /> - 3인용 소파, 소파 테이블, 공기청정기, 대형 텔레비젼, 시스템 에어컨, 옷장
-                            <br /><br />2. 침실<br /> - 퀸 사이즈의 최고급 수입 침대, 최신형 컴퓨터, 조명
-                            <br /><br />3. 부엌<br /> - 냉장고, 세탁기, 세탁세제, 전자레인지, 정수기, 커피 머신, 드립 커피 세트,  식용류, 간장, 다양한 양념, 시리얼, 우유
-                            <br /><br />4. 화장실<br /> - 치약, 칫솔, 샴푸, 린스, 바디클렌져, 샤워볼, 비누, 핸드 워시
-                          </span>
+                          {announcement ?
+                            <span>
+                              {announcement.description}
+                              {announcement.locationExplanation}
+                            </span> :
+                            <span></span>
+                          }
                         </div>
                       </div>
                     </div>
@@ -103,16 +108,16 @@ const Announcement = () => {
         </ExplainBox>
         <Amenities />
         <CheckIn />
-      </FlexLeft>
-      <FlexRight>
+      </FlexLeft> : <div>로딩중</div>}
+      {loding ? <FlexRight>
         <RemoteControl>
           <RemoteControlTitle>요금을 확인하려면 날짜를</RemoteControlTitle>
           <RemoteControlTitle>입력하세요</RemoteControlTitle>
           <Score>
             <BsFillStarFill/>
-            <span>4.90</span>
+            <span>{announcement.reviewGrade}</span>
             <span>.</span>
-            <span className='line'>후기 114개</span>
+            <span className='line'>후기 {announcement.reviewCount}개</span>
           </Score>
           <CheckBox>
             <div>
@@ -132,7 +137,7 @@ const Announcement = () => {
           </CheckBox>
           <RemoteControlBtn>예약 가능 여부 보기</RemoteControlBtn>
         </RemoteControl>
-      </FlexRight>
+      </FlexRight> : <div>로딩중</div>}
     </FlexBox>
   )
 }
@@ -264,6 +269,10 @@ const RemoteControl = styled.div`
   border-radius: 12px;
   padding: 24px;
   box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px
+  &.scroll{
+    position: fixed;
+    top:130px;
+  }
 `
 const RemoteControlTitle = styled.div`
   font-size: 22px;

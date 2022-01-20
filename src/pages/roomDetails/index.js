@@ -6,6 +6,7 @@ import Details from './molecules/details'
 
 
 const RoomDetails = () => {
+
   return (
     <Page>
       <Header page={'search'} filterPage={'filterPage'} />
