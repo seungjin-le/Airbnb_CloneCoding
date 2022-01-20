@@ -24,7 +24,7 @@ const AccountMenu = ({userToken}) => {
             <div>
             <span className='name'>{users.name},</span>
             <span className='email'> {users.email} ·</span>
-            <Link className='link'>프로필로 이동</Link>
+            <Link className='link' to='/information'>프로필로 이동</Link>
             </div>
             :
             false
@@ -32,11 +32,13 @@ const AccountMenu = ({userToken}) => {
         </AccountEmail>
         <AccountCardBox>
           <MenuCard>
-            <CardIcon><FaRegIdCard/></CardIcon>
-            <CardTextBox>
-              <CardTitle>개인정보</CardTitle>
-              <CardText>개인정보 빛 연락처를 알려주세요</CardText>
-            </CardTextBox>
+            <Link to='/information' className='link'>
+              <CardIcon><FaRegIdCard/></CardIcon>
+              <CardTextBox>
+                <CardTitle>개인정보</CardTitle>
+                <CardText>개인정보 빛 연락처를 알려주세요</CardText>
+              </CardTextBox>
+            </Link>
           </MenuCard>
           <MenuCard>
             <CardIcon><BiShield/></CardIcon>
@@ -160,6 +162,13 @@ const MenuCard = styled.div`
   border-radius: 12px;
   text-decoration: none;
   box-sizing: border-box;
+  & .link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
   @media screen and (max-width: 1128px) {
     width: 49%;
     

@@ -33,8 +33,6 @@ const Account = () => {
 }
 
 const Page = styled(PageWrap)`
-  display: flex;
-  flex-direction: column;
   height: 100%;
 `
 

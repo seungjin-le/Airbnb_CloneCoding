@@ -73,8 +73,12 @@
 
 ## 2022-01-19 진행상황
 + LoginAPI연동
-  + Login jwt localStorage에 저장 적용
+  + Login jwt localStorage에 저장
   + Login localStorage jwt 를 이용한 자동 로그인 추가
++ 계정 페이지 추가
+  + 계정 페이지 자동로그인 API 연동
+  + 계정 페이지 자동로그인 jwt토큰으로 해당 유저 name, email 불러오기 적용
+
 
 ## 2022-01-20 진행상황
 + 
