@@ -21,13 +21,11 @@ const Announcement = ({data,id}) => {
   const [loding, setLoding] = useState(false);
   const [announcement, setAnnouncement] = useState();
 
-  console.log(announcement)
   useEffect(() => {
     if (data) {
       axios.get(`https://dev.nada-risingcamp.shop/rooms/${id}/contents?token=${data}`)
         .then(res => setAnnouncement(res.data.result.roomInfo[0]))
         .catch((err) => console.log(err)).catch(err => console.log(err))
-      console.log(announcement)
     }
   }, [data]);
   setTimeout(() => {

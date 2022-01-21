@@ -41,7 +41,7 @@ const Details = () => {
       <DetailsTitle data={data} id={url}/>
       <DetailsImg data={data} id={url}/>
       <Announcement data={data} id={url}/>
-      <ReView data={data} id={url}/>
+      <ReView id={url}/>
       <HostPosition />
     </DetailsPaddingBox>
   )

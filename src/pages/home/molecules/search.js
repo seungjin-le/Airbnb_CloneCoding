@@ -153,6 +153,7 @@ const BoxItemList = styled.div`
   
 `
 const SearchItem = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -179,6 +180,16 @@ const SearchItem = styled.div`
     & .positionTitle {
       cursor: pointer;
     }
+  }
+  & .record{
+    list-style: none;
+    position: absolute;
+    width: 90%;
+    top:100%;
+    background: gray;
+    font-size: 18px;
+    line-height: 16px;
+    font-weight: 600;
   }
 `
 const ItemTitle = styled.div`
