@@ -35,10 +35,47 @@ const Hosting = () => {
   }
   return (
     <Page>
-      <div>
-        <input type="file" accept="image/*" onChange={onFileChange}/>
-        <button onClick={onClick} >사진 등록</button>
-      </div>
+      <Header page={'search'} filterPage={'filterPage'}/>
+      <MailSection>
+        <FlexLeft>
+          <span>게스트가 머무르게 될<br/>숙소의 정보가<br/>무엇인가요?</span>
+        </FlexLeft>
+        { lextPage ?
+          <FlexRight>
+            <BtnBox>
+              <span>도움말</span>
+              <span>저장 및 나가기</span>
+            </BtnBox>
+            <InputForm>
+                <input type="file" accept="image/*" onChange={onFileChange}/>
+                <button onClick={onClick} >사진 등록</button>
+            </InputForm>
+            <NextBtnBox>
+              <span>뒤로</span>
+              <span>저장</span>
+            </NextBtnBox>
+          </FlexRight> :
+          <FlexRight>
+            <BtnBox>
+              <span>도움말</span>
+              <span>저장 및 나가기</span>
+            </BtnBox>
+            <InputForm>
+              <input className='text' type="text" placeholder='텍스트를 입력하세요.'/>
+              <input className='text' type="text" placeholder='텍스트를 입력하세요.'/>
+              <input className='text' type="text" placeholder='텍스트를 입력하세요.'/>
+              <input className='text' type="text" placeholder='텍스트를 입력하세요.'/>
+              <input className='text' type="text" placeholder='텍스트를 입력하세요.'/>
+              <input className='text' type="text" placeholder='텍스트를 입력하세요.'/>
+            </InputForm>
+            <NextBtnBox>
+              <span>뒤로</span>
+              <span onClick={() => setLextPage((lextPage) => !lextPage)}>다음</span>
+            </NextBtnBox>
+          </FlexRight>
+        }
+      </MailSection>
+      <Footer />
     </Page>
   )
 }
@@ -107,12 +144,25 @@ const NextBtnBox = styled.div`
 const InputForm = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   & input {
+    
     font-size: 25px;
     padding: 25px 20px;
     border-radius: 8px;
     margin-bottom: 15px;
-
+  }
+  & input::file-selector-button { display: none; }
+  & .text {
+    width: 100%;
+  }
+  & button{
+    text-align: center;
+    display: inline-block;
+    width: 100px;
+    border-radius: 10px;
+    padding: 10px 20px;
   }
 `
 const FlexRight = styled.div`
@@ -131,45 +181,3 @@ export default Hosting;
 
 
 
-//<Header page={'search'} filterPage={'filterPage'}/>
-//       <MailSection>
-//         <FlexLeft>
-//           <span>게스트가 머무르게 될<br/>숙소의 정보가<br/>무엇인가요?</span>
-//         </FlexLeft>
-//         { lextPage ?
-//           <FlexRight>
-//             <BtnBox>
-//               <span>도움말</span>
-//               <span>저장 및 나가기</span>
-//             </BtnBox>
-//             <InputForm>
-//               <input type="file"/>
-//               <input type="file"/>
-//               <input type="file"/>
-//             </InputForm>
-//             <NextBtnBox>
-//               <span>뒤로</span>
-//               <span>저장</span>
-//             </NextBtnBox>
-//           </FlexRight> :
-//           <FlexRight>
-//             <BtnBox>
-//               <span>도움말</span>
-//               <span>저장 및 나가기</span>
-//             </BtnBox>
-//             <InputForm>
-//               <input type="text" placeholder='텍스트를 입력하세요.'/>
-//               <input type="text" placeholder='텍스트를 입력하세요.'/>
-//               <input type="text" placeholder='텍스트를 입력하세요.'/>
-//               <input type="text" placeholder='텍스트를 입력하세요.'/>
-//               <input type="text" placeholder='텍스트를 입력하세요.'/>
-//               <input type="text" placeholder='텍스트를 입력하세요.'/>
-//             </InputForm>
-//             <NextBtnBox>
-//               <span>뒤로</span>
-//               <span onClick={() => setLextPage((lextPage) => !lextPage)}>다음</span>
-//             </NextBtnBox>
-//           </FlexRight>
-//         }
-//       </MailSection>
-//       <Footer />

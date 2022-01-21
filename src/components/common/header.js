@@ -132,7 +132,7 @@ const Header = (props) => {
                           <ListItem>알림</ListItem>
                           <ListItem>위시리스트</ListItem>
                           <span style={{borderBottom: '1px solid #ddd', margin: '3px 0'}}></span>
-                          <ListItem>숙소 관리</ListItem>
+                          <ListItem><Link to='hosting'>숙소 관리</Link></ListItem>
                           <ListItem>체험 관리</ListItem>
                           <ListItem><Link to='/account'>계정</Link></ListItem>
                           <span style={{borderBottom: '1px solid #ddd', margin: '3px 0'}}></span>
