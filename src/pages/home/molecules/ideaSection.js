@@ -47,6 +47,7 @@ const SectionBox = styled.div`
 const Section = styled(PaddingBox)`
 `
 const Title = styled(SectionTitle)`
+  
 `
 const RecommendationBox = styled.div`
   display: flex;

@@ -72,8 +72,9 @@ const Header = (props) => {
 
 
   return (
-        <HeaderPaddingBox className={pageUrl === 'filter' ? 'filter' : false}>
+        <HeaderPaddingBox className={pageUrl === 'filter' ? 'filter' : scroll ? 'true' : 'false'}>
           { userJoin ? <LoginMobal toggleState={toggleState} /> : false }
+          <div className={scroll ? 'true' : 'false'}>
           <HeaderBox className={scroll ? 'true' : 'false'}>
             <LogoBox>
               <Link to='/'>
@@ -159,10 +160,12 @@ const Header = (props) => {
               </DropdownMenuBox>
             </UserBox>
           </HeaderBox>
+          </div>
           {props.page === 'search' ?
             false :
             <Search move={scroll} token={data}/>
           }
+
         </HeaderPaddingBox>
     )
 }
@@ -170,9 +173,29 @@ const Header = (props) => {
 const HeaderPaddingBox = styled.div`
   width: 100%;
   height: 80px;
+  margin: 0 auto;
+  
   &.filter > div{
     padding: 0 30px;
     max-width: 100%;
+  }
+  &.true {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  }
+  & > div{
+    margin-bottom: 50px;
+  }
+  & > .true{
+    width: 100%;
+    height: 80px;
+    top:0;
+    position: fixed;
+    z-index: 2;
+    background: #fff;
   }
 `
 const HeaderBox = styled(PaddingBox)`
@@ -187,11 +210,14 @@ const HeaderBox = styled(PaddingBox)`
   &.true {
     position: fixed;
     top: 0;
-    background: #fff;
     width: 100%;
     height: 80px;
-    z-index: 2;
+    z-index: 3;
     box-sizing: border-box;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
   }
   & .true {
     color: #222;

@@ -27,7 +27,7 @@ export const PaddingBox = styled.div`
   box-sizing: border-box;
 `
 export const SectionTitle = styled.div`
-  font-size: 42px;
+  font-size: 33px;
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 47px;

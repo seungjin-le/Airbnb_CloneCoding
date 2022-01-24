@@ -30,6 +30,7 @@ const MainPage = () => {
 
 const Page = styled(PageWrap)`
   box-sizing: border-box;
+  width: 100%;
 `
 const FirstSection = styled.div`
   background: #000;

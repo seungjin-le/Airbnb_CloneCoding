@@ -31,7 +31,10 @@ const ImgBox = styled(PaddingBox)`
   justify-content: center;
   z-index: 0;
   top: 90px;
-  
+  @media screen and (max-width: 1127px) {
+    padding: 0;
+    width: 100%;
+  }
 `
 const Section = styled.div`
   background-image: url("https://a0.muscache.com/im/pictures/ce7d8ae6-977b-4031-b800-762ac4daf347.jpg?im_w=1920");
@@ -43,6 +46,9 @@ const Section = styled.div`
   height: 100%;
   width: 100%;
   border-radius: 10px;
+  @media screen and (max-width: 1127px) {
+    border-radius: 0;
+  }
 `
 const BtnBox = styled.div`
   width: 100%;
@@ -59,6 +65,12 @@ const BtnTitle = styled.div`
   letter-spacing: -0.02em;
   line-height: 43px;
   text-align: center;
+  @media screen and (max-width: 1127px){
+    font-size: 32px;
+  }
+  @media screen and (min-width: 1400px) {
+    font-size: 48px;
+  }
 `
 const Btn = styled.div`
   display: inline-block;
