@@ -221,7 +221,7 @@ const SocialBox = styled.div`
   justify-content: end;
   @media screen and (max-width: 1127px){
     margin-bottom: 16px;
-  }
+  }                      
 `
 const LngText = styled.span`
   font-weight: 600 ;
@@ -254,3 +254,4 @@ const SocialIconsBox = styled.div`
   }
 `
 export default Footer;
+

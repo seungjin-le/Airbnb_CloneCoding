@@ -35,8 +35,10 @@ const FirstSection = styled.div`
   background: #000;
   width: 100%;
   max-height: 1122px;
-  height: 100%;
+  height: 65vw;
   display: flex;
   flex-direction: column;
+  padding-bottom: 40px;
+  box-sizing: border-box;
 `
 export default MainPage

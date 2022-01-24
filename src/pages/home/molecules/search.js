@@ -7,7 +7,6 @@ import axios from 'axios'
 
 const Search = ({move, token}) => {
   let text;
-  const [data, setData] = useState();
   const [searchClick, setSearchClick] = useState(false);
   const searchIcon = () => {
     setSearchClick(search => !search);
@@ -87,6 +86,7 @@ const Search = ({move, token}) => {
 }
 const Box = styled.div`
   width: 100%;
+  
 `
 const SearchPaddingBox = styled(PaddingBox)`
   width: 100%;
