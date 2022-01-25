@@ -18,33 +18,33 @@ const Header = (props) => {
   const [loginStatus, setLoginStatus] = useState(false);
   const [userToken, setUserToken] = useState();
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll); //clean up
-    };
-  }, []);
-  useEffect(() => {
-    if(data){
-      axios.get(`https://dev.nada-risingcamp.shop/users/auto-login?token=${data}`).
-      then(res => setUserToken(res.data)).catch((err) => console.log(err))
-      console.log('성공')
-    }
-  }, [data]);
-  useEffect(() => {
-    setData(JSON.parse(localStorage.getItem("users")));
-    console.log(userToken)
-  },[])
-  const success = () => {
-    if(userToken){
-      setLoginStatus(true);
-    }else if(userToken){
-      setLoginStatus(false);
-    }
-  }
-  useEffect(() => {
-    success()
-  },[userToken])
+  //useEffect(() => {
+  //     window.addEventListener('scroll', handleScroll);
+  //     return () => {
+  //       window.removeEventListener('scroll', handleScroll); //clean up
+  //     };
+  //   }, []);
+  //   useEffect(() => {
+  //     if(data){
+  //       axios.get(`https://dev.nada-risingcamp.shop/users/auto-login?token=${data}`).
+  //       then(res => setUserToken(res.data)).catch((err) => console.log(err))
+  //       console.log('성공')
+  //     }
+  //   }, [data]);
+  //   useEffect(() => {
+  //     setData(JSON.parse(localStorage.getItem("users")));
+  //     console.log(userToken)
+  //   },[])
+  //   const success = () => {
+  //     if(userToken){
+  //       setLoginStatus(true);
+  //     }else if(userToken){
+  //       setLoginStatus(false);
+  //     }
+  //   }
+  //   useEffect(() => {
+  //     success()
+  //   },[userToken])
 
   const pageUrl = document.location.href.split('http://localhost:3000/').join('');
   const handleScroll = () => {
@@ -54,6 +54,7 @@ const Header = (props) => {
       setScroll(false);
     }
   };
+
   const logOutClick = () => {
     localStorage.clear();
     window.location.reload()
@@ -65,6 +66,7 @@ const Header = (props) => {
   const joinModal = () => {
     setUserJoin(userJoin => !userJoin);
     setOnClick(onClick => !onClick);
+    document.body.style.overflow = 'hidden';
   }
   const toggleState = () => {
     setUserJoin(userJoin => !userJoin);
@@ -132,7 +134,7 @@ const Header = (props) => {
                           <ListItem>알림</ListItem>
                           <ListItem>위시리스트</ListItem>
                           <span style={{borderBottom: '1px solid #ddd', margin: '3px 0'}}/>
-                          <ListItem><Link to='hosting'>숙소 관리</Link></ListItem>
+                          <ListItem><Link to='/hosting'>숙소 관리</Link></ListItem>
                           <ListItem>체험 관리</ListItem>
                           <ListItem><Link to='/account'>계정</Link></ListItem>
                           <span style={{borderBottom: '1px solid #ddd', margin: '3px 0'}}/>
@@ -149,7 +151,7 @@ const Header = (props) => {
                             }} onClick={joinModal}>회원가입</ListItem>
                           <ListItem onClick={joinModal}>로그인</ListItem>
                           <span style={{borderBottom: '1px solid #333', margin: '3px 0'}} />
-                          <ListItem>숙소 호스트 되기</ListItem>
+                          <ListItem><Link to='/hosting'>숙소 호스트 되기</Link></ListItem>
                           <ListItem>체험 호스팅하기</ListItem>
                           <ListItem style={{borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'}}>도움말</ListItem>
                         </div>

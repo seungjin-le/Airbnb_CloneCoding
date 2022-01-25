@@ -11,7 +11,7 @@ const LoginMobal = ({ toggleState }) => {
   const [emailLogin, setEmailLogin] = useState(false);
   const [loginStatus, setLoginStatus] = useState(false);
   const [passwordLogin, setPasswordLogin] = useState('');
-
+  const [bodyLock, setBodyLock] = useState(false);
 
 
   let jwt;
@@ -41,11 +41,13 @@ const LoginMobal = ({ toggleState }) => {
 
 
 
+
   const emailLoginClick = () => {
     setEmailLogin(emailLogin => !emailLogin);
   }
   const onClick = () => {
-    toggleState(toggle => !toggle)
+    toggleState(!toggleState)
+    document.body.style.overflow = 'unset';
   }
   const emailClick = () => {
     const email = userEmail;
@@ -81,7 +83,6 @@ const LoginMobal = ({ toggleState }) => {
 
       })
   }
-
   const joinClick = () => {
     axios.post('https://dev.nada-risingcamp.shop/users/sign-up',
       {
@@ -107,9 +108,9 @@ const LoginMobal = ({ toggleState }) => {
   }
 
   return (
-    <ModalBackground>
+    <ModalBackground onClick={onClick}>
       {loginStatus ?
-        <JoinModalBox>
+        <JoinModalBox >
           <ModalTitleBox>
             <CloseIconBox onClick={onClick}>
               <GrClose/>
@@ -188,12 +189,9 @@ const LoginMobal = ({ toggleState }) => {
     </ModalBackground>
   );
 }
-//{loginStatus ?
-//             <LoginBtn onClick={passwordClick}>로그인</LoginBtn> :
-//             <LoginBtn onClick={emailClick}>계속</LoginBtn>
-//           }
+
 const ModalBackground = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
@@ -235,7 +233,7 @@ const CloseIconBox = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  z-index: 3;
+  z-index: 4;
   border-radius: 45px;
   justify-content: center;
   &:hover {

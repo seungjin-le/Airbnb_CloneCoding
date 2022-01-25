@@ -3,9 +3,9 @@ import {IoMdHeartEmpty} from 'react-icons/io'
 import {RiStarSFill} from 'react-icons/ri'
 import {Link} from 'react-router-dom'
 
-const RoomListItem = ({roomData}) => {
 
-
+const RoomListItem = ({title}) => {
+  console.log(title)
   //const moveDetailsPage = () => {
   //     setTimeout(() => {
   //       let DetailsPage ='/roomDetails/'+roomData.roomId
@@ -27,7 +27,7 @@ const RoomListItem = ({roomData}) => {
               <TitleBox>
                 <Title>
                   <div>Oncheon 1(il)-dong, Yuseong-gu의 공동 주택 전체</div>
-                  <div>[유성온천역 3분] 더 팰리스1 - 프리미엄 에어비엔비 the Palace primium</div>
+                  <div>{title}</div>
                 </Title>
                 <IconBox>
                   <IoMdHeartEmpty/>

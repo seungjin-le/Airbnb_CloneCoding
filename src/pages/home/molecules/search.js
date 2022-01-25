@@ -35,11 +35,8 @@ const Search = ({move, token}) => {
   }
   useEffect(() => {
     let link = document.location.href;
-    console.log(link);
     let para = document.location.href.split("3000/");
-    console.log(para[1]);
     setNoneSearch( para[1] !== 'roomDetails')
-    console.log(noneSearch)
   }, []);
 
 

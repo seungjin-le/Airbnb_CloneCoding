@@ -2,17 +2,21 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import RoomListItem from './atoms/roomListItem'
 import KakaoMap from '../../../components/common/atoms/kakaoMap'
-import PageMoveBtn from './atoms/pageMoveBtn'
 import {useEffect, useState} from 'react'
-import axios from 'axios'
+import Pagination from './atoms/pagination'
 
 const RoomList = ({searchUrl}) => {
   const [roomData, setRoomData] = useState();
   let token;
-
-
-
-
+  const [posts, setPosts] = useState([]);
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((res) => res.json())
+      .then((data) => setPosts(data));
+  }, []);
   //useEffect(() => {
   //     token = JSON.parse(localStorage.getItem("users"));
   //   }, []);
@@ -36,15 +40,18 @@ const RoomList = ({searchUrl}) => {
         <ExplainText>예약하기 전에 코로나19 관련 여행제한 사항을 확인하세요. <Link>자세히 알아보기</Link></ExplainText>
         <ItemBox>
           <ListPagNumBox>
-            <RoomListItem />
-            <RoomListItem />
-            <RoomListItem />
-            <RoomListItem />
-            <RoomListItem />
-            <RoomListItem />
-            <RoomListItem />
+            {posts.slice(offset, offset + limit).map(({ id, title, body }) => (
+              <RoomListItem title={title}/>
+            ))}
+            <footer>
+              <Pagination
+                total={posts.length}
+                limit={limit}
+                page={page}
+                setPage={setPage}
+              />
+            </footer>
             <PageNumBtnBox>
-              <PageMoveBtn />
             </PageNumBtnBox>
           </ListPagNumBox>
         </ItemBox>
