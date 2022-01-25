@@ -44,8 +44,8 @@ const Announcement = ({data,id}) => {
     };
   }, []);
   const handleScroll = () => {
-    if(window.scrollY > 50){
-      console.log('50')
+    if(window.scrollY > 600){
+      console.log(window.scrollY)
     }
   }
 
@@ -272,8 +272,8 @@ const Modal = styled.div`
 
 const FlexRight = styled.div`
   width: 30%;
-  height: 100%;
-  display: inline-block;
+  height: 1700px;
+  display: block;
   justify-content: center;
 `
 const RemoteControl = styled.div`
@@ -281,7 +281,8 @@ const RemoteControl = styled.div`
   border-radius: 12px;
   padding: 24px;
   box-shadow: rgb(0 0 0 / 12%) 0 6px 16px;
-  
+  position: sticky;
+  top: 150px;
 `
 const RemoteControlTitle = styled.div`
   font-size: 22px;
@@ -304,7 +305,8 @@ const Score = styled.div`
   }
 `
 const CheckBox = styled.div`
-  width: 300px;
+  max-width: 300px;
+  width: 100%;
   margin: 20px 0;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -317,7 +319,7 @@ const CheckBox = styled.div`
   }
   & .checkIn,
   & .checkOut {
-    width: 100%;
+    flex: 1;
     padding: 5px 36px 10px 12px;
   }
   & .user{
