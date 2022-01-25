@@ -34,27 +34,6 @@ const Announcement = ({data,id}) => {
   //   }, 1500)
 
 
-  useEffect(() => {
-    //const nav = document.getElementById('nav');
-    //     console.log(nav.getBoundingClientRect())
-    //     id='nav' className={scroll ? 'scroll' : false}
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll); //clean up
-    };
-  }, []);
-  const handleScroll = () => {
-    if(window.scrollY > 600){
-      console.log(window.scrollY)
-    }
-  }
-
-    //if(window.scrollY >= 320){
-    //       setScroll(true);
-    //     }else{
-    //       setScroll(false);
-    //     }
-
   return (
     <FlexBox>
       <FlexLeft>

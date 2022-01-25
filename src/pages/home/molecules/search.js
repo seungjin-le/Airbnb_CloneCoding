@@ -1,19 +1,18 @@
 import styled from 'styled-components'
 import {PaddingBox} from '../../../components/common/styled'
 import {BiSearch} from 'react-icons/bi'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 const Search = ({move, token}) => {
   let text;
+  const [noneSearch, setNoneSearch] = useState(true);
   const [searchClick, setSearchClick] = useState(false);
   const searchIcon = () => {
     setSearchClick(search => !search);
     search()
   }
-
-
 
   const search = () => {
     if(text) {
@@ -34,11 +33,21 @@ const Search = ({move, token}) => {
       window.location.href= `${filterPage}`
     },1000)
   }
+  useEffect(() => {
+    let link = document.location.href;
+    console.log(link);
+    let para = document.location.href.split("3000/");
+    console.log(para[1]);
+    setNoneSearch( para[1] !== 'roomDetails')
+    console.log(noneSearch)
+  }, []);
+
 
 
 
   return (
     <Box>
+      {noneSearch ?
       <SearchPaddingBox>
         <SearchBox className={move ? 'true' : 'false'}>
           <BoxItemList>
@@ -80,13 +89,17 @@ const Search = ({move, token}) => {
             </SearchIconBox>
           </BoxItemList>
         </SearchBox>
-      </SearchPaddingBox>
+      </SearchPaddingBox> : <div />
+      }
     </Box>
   );
 }
 const Box = styled.div`
   width: 100%;
-  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `
 const SearchPaddingBox = styled(PaddingBox)`
   width: 100%;

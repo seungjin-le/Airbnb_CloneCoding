@@ -70,7 +70,6 @@ const Header = (props) => {
     setUserJoin(userJoin => !userJoin);
   }
 
-
   return (
         <HeaderPaddingBox className={pageUrl === 'filter' ? 'filter' : scroll ? 'true' : 'false'}>
           { userJoin ? <LoginMobal toggleState={toggleState} /> : false }
@@ -88,7 +87,7 @@ const Header = (props) => {
                 }
               </Link>
             </LogoBox>
-            {props.page === 'search' ? <div></div> :
+            {props.page === 'search' ? <div /> :
               <CenterBox className={scroll ? 'true' : 'false'}>
                 <CenterTextBox>
                   <LineBox>
@@ -104,7 +103,7 @@ const Header = (props) => {
               </CenterBox>
             }
             {props.filterPage === 'filterPage' ? <Search move={'filterPage'}/>
-              : <div></div>
+              : <div/>
             }
             <UserBox className={props.filterPage === 'filterPage' ? 'filter' : false}>
               {props.page === 'search' ?
@@ -132,11 +131,11 @@ const Header = (props) => {
                           <ListItem>메시지</ListItem>
                           <ListItem>알림</ListItem>
                           <ListItem>위시리스트</ListItem>
-                          <span style={{borderBottom: '1px solid #ddd', margin: '3px 0'}}></span>
+                          <span style={{borderBottom: '1px solid #ddd', margin: '3px 0'}}/>
                           <ListItem><Link to='hosting'>숙소 관리</Link></ListItem>
                           <ListItem>체험 관리</ListItem>
                           <ListItem><Link to='/account'>계정</Link></ListItem>
-                          <span style={{borderBottom: '1px solid #ddd', margin: '3px 0'}}></span>
+                          <span style={{borderBottom: '1px solid #ddd', margin: '3px 0'}}/>
                           <ListItem>도움말</ListItem>
                           <ListItem onClick={logOutClick}>로그아웃</ListItem>
                         </div>
@@ -149,7 +148,7 @@ const Header = (props) => {
                               fontWeight: '400'
                             }} onClick={joinModal}>회원가입</ListItem>
                           <ListItem onClick={joinModal}>로그인</ListItem>
-                          <span style={{borderBottom: '1px solid #333', margin: '3px 0'}}></span>
+                          <span style={{borderBottom: '1px solid #333', margin: '3px 0'}} />
                           <ListItem>숙소 호스트 되기</ListItem>
                           <ListItem>체험 호스팅하기</ListItem>
                           <ListItem style={{borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'}}>도움말</ListItem>
@@ -162,8 +161,7 @@ const Header = (props) => {
           </HeaderBox>
           </div>
           {props.page === 'search' ?
-            false :
-            <Search move={scroll} token={data}/>
+            false : <Search move={scroll} token={data}/>
           }
 
         </HeaderPaddingBox>

@@ -20,5 +20,6 @@ const FilterPage = () => {
 }
 
 const Page = styled(PageWrap)`
+  
 `
 export default FilterPage;

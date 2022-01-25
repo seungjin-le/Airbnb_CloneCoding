@@ -9,7 +9,9 @@ const RoomDetails = () => {
 
   return (
     <Page>
-      <Header page={'search'} filterPage={'filterPage'} />
+      <div>
+        <Header page={'search'} filterPage={'filterPage'} searchNone={false}/>
+      </div>
       <Details />
       <Footer />
     </Page>
