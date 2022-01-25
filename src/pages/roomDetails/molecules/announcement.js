@@ -16,7 +16,18 @@ import axios from 'axios'
 const Announcement = ({data,id}) => {
   const [modal, setModal] = useState(false);
   const [scroll, setScroll] = useState(false);
+  const [bodyLock, setBodyLock] = useState(false);
   const modalClick = () => {
+    setBodyLock(!bodyLock)
+    if(bodyLock){
+      console.log(bodyLock)
+      document.body.style.overflow='unset';
+    }else{
+      document.body.style.overflow='hidden';
+      console.log(bodyLock)
+    }
+
+
     setModal( modal => !modal)
   }
   const [loding, setLoding] = useState(false);
@@ -199,13 +210,13 @@ const ExplainDetails = styled.div`
   }
 `
 const ModalBackGround = styled.div`
-  overflow: hidden;
-  position: absolute;
+  
+  position: fixed;
   display: inline;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 200vw;
+  height: 100vh;
   background: rgba(0,0,0,.5);
   z-index: 3;
 `
@@ -217,10 +228,10 @@ const Modal = styled.div`
   width: 100%;
   height: 773px;
   overflow-y: scroll;
-  position: absolute;
+  position: fixed;
   transform: translate(-50%, -50%);
   background: #fff;
-  top: 100vh;
+  top: 50%;
   left: 50%;
   padding: 0 20px;
   box-sizing: border-box;
