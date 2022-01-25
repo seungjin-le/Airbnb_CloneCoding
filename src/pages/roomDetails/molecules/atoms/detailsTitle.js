@@ -10,23 +10,23 @@ import axios from 'axios'
 const DetailsTitle = ({data,id}) => {
 
   const [title, setTitle] = useState({});
-  useEffect(() => {
-    if (data) {
-      axios.get(`https://dev.nada-risingcamp.shop/rooms/${id}/contents?token=${data}`)
-        .then(res => setTitle(res.data.result.roomInfo[0]))
-        .catch((err) => console.log(err)).catch(err => console.log(err))
-    }
-  }, [data]);
+  //useEffect(() => {
+  //     if (data) {
+  //       axios.get(`https://dev.nada-risingcamp.shop/rooms/${id}/contents?token=${data}`)
+  //         .then(res => setTitle(res.data.result.roomInfo[0]))
+  //         .catch((err) => console.log(err)).catch(err => console.log(err))
+  //     }
+  //   }, [data]);
   return (
     <FlexBox>
-      <Title>{title ? title.title : false}</Title>
+      <Title>[유성온천역 3분] 더 팰리스1 - 프리미엄 에어비엔비 the Palace primium</Title>
       <SubTextBox>
         <SubTextLeft>
           <RiStarSFill className='scoreSvg'/>
-          <span className='score'>{title.reviewGrade} · <Link to={'#'}>후기 {title.reviewCount}개</Link> ·</span>
+          <span className='score'>4.90 · <Link to={'#'}>후기 141개</Link> ·</span>
           <IoIosMedal className={'hostSvg'}/>
           <span className='host'>슈퍼호스트 ·</span>
-          <span className='position'>{title.location}, 한국</span>
+          <span className='position'>Oncheon 1(il)-dong, Yuseong-gu, 대전(Daejeon), 한국</span>
         </SubTextLeft>
         <SubTextRight>
           <MdOutlineIosShare className='shareSvg'/>

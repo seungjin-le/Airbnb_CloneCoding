@@ -20,8 +20,11 @@ const SectionBox = styled.div`
   width: 100%;
   height: 41vw;
   position: relative;
+  
 `
 const ImgBox = styled(PaddingBox)`
+  left: 50%;
+  transform: translateX(-50%);
   position: absolute;
   height: 100%;
   width: 100%;

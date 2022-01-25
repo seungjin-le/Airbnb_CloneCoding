@@ -15,32 +15,53 @@ import axios from 'axios'
 
 const Announcement = ({data,id}) => {
   const [modal, setModal] = useState(false);
+  const [scroll, setScroll] = useState(false);
   const modalClick = () => {
     setModal( modal => !modal)
   }
   const [loding, setLoding] = useState(false);
   const [announcement, setAnnouncement] = useState();
 
+  //useEffect(() => {
+  //     if (data) {
+  //       axios.get(`https://dev.nada-risingcamp.shop/rooms/${id}/contents?token=${data}`)
+  //         .then(res => setAnnouncement(res.data.result.roomInfo[0]))
+  //         .catch((err) => console.log(err)).catch(err => console.log(err))
+  //     }
+  //   }, [data]);
+  //setTimeout(() => {
+  //     setLoding(true)
+  //   }, 1500)
+
+
   useEffect(() => {
-    if (data) {
-      axios.get(`https://dev.nada-risingcamp.shop/rooms/${id}/contents?token=${data}`)
-        .then(res => setAnnouncement(res.data.result.roomInfo[0]))
-        .catch((err) => console.log(err)).catch(err => console.log(err))
+    //const nav = document.getElementById('nav');
+    //     console.log(nav.getBoundingClientRect())
+    //     id='nav' className={scroll ? 'scroll' : false}
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll); //clean up
+    };
+  }, []);
+  const handleScroll = () => {
+    if(window.scrollY > 50){
+      console.log('50')
     }
-  }, [data]);
-  setTimeout(() => {
-    setLoding(true)
-  }, 1500)
+  }
 
-
+    //if(window.scrollY >= 320){
+    //       setScroll(true);
+    //     }else{
+    //       setScroll(false);
+    //     }
 
   return (
     <FlexBox>
-      {loding ? <FlexLeft>
+      <FlexLeft>
         <UserImgBox>
           <div>
             <Title>나은님이 호스팅 하는 공동 주택 전체</Title>
-            <SubTitle>최대 인원 {announcement.maxPeople}명 · 침실 {announcement.bedroomNum}개 · 침대 {announcement.bedNum}개 · 욕실 {announcement.bathroomNum}개</SubTitle>
+            <SubTitle>최대 인원 4명 · 침실 2개 · 침대 1개 · 욕실 1개</SubTitle>
           </div>
           <UserImg><img src="https://a0.muscache.com/im/pictures/user/ac6ea835-287f-46f5-a573-55a14024ef08.jpg?im_w=240" alt=""/>
           </UserImg>
@@ -68,12 +89,8 @@ const Announcement = ({data,id}) => {
           </Benefit>
         </BenefitBox>
         <ExplainBox>
-          {announcement ?
-            <span>{announcement.description}</span> :
-            <div></div>
-          }
+            <span>건물</span>
           - 신축 건물입니다...
-
           <ExplainDetails onClick={modalClick}><span>더 보기<AiOutlineRight/></span></ExplainDetails>
           {modal ?
             <ModalBackGround onClick={modalClick}>
@@ -87,13 +104,9 @@ const Announcement = ({data,id}) => {
                     <div>
                       <div>
                         <div>
-                          {announcement ?
-                            <span>
-                              {announcement.description}
-                              {announcement.locationExplanation}
-                            </span> :
-                            <span></span>
-                          }
+                           <span>
+                              ㅁㄴㅇㅁㄴㅇ
+                           </span>
                         </div>
                       </div>
                     </div>
@@ -106,16 +119,16 @@ const Announcement = ({data,id}) => {
         </ExplainBox>
         <Amenities />
         <CheckIn />
-      </FlexLeft> : <div>로딩중</div>}
-      {loding ? <FlexRight>
-        <RemoteControl>
+      </FlexLeft>
+      <FlexRight>
+        <RemoteControl >
           <RemoteControlTitle>요금을 확인하려면 날짜를</RemoteControlTitle>
           <RemoteControlTitle>입력하세요</RemoteControlTitle>
           <Score>
             <BsFillStarFill/>
-            <span>{announcement.reviewGrade}</span>
+            <span>4.9</span>
             <span>.</span>
-            <span className='line'>후기 {announcement.reviewCount}개</span>
+            <span className='line'>후기 141개</span>
           </Score>
           <CheckBox>
             <div>
@@ -135,7 +148,7 @@ const Announcement = ({data,id}) => {
           </CheckBox>
           <RemoteControlBtn>예약 가능 여부 보기</RemoteControlBtn>
         </RemoteControl>
-      </FlexRight> : <div>로딩중</div>}
+      </FlexRight>
     </FlexBox>
   )
 }
@@ -145,17 +158,19 @@ const FlexBox = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
   border-bottom: 1px solid #ddd;
+  
 `
 const FlexLeft = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 60%;
   height: 100%;
-  flex: 1.37;
 `
+
 const UserImgBox = styled.div`
   display: flex;
   flex-direction: row;
@@ -226,7 +241,7 @@ const Modal = styled.div`
   position: absolute;
   transform: translate(-50%, -50%);
   background: #fff;
-  top: 50%;
+  top: 100vh;
   left: 50%;
   padding: 0 20px;
   box-sizing: border-box;
@@ -256,21 +271,17 @@ const Modal = styled.div`
 
 
 const FlexRight = styled.div`
-  width: 100%;
+  width: 30%;
   height: 100%;
-  flex: 1.01;
-  display: flex;
+  display: inline-block;
   justify-content: center;
 `
 const RemoteControl = styled.div`
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px
-  &.scroll{
-    position: fixed;
-    top:130px;
-  }
+  box-shadow: rgb(0 0 0 / 12%) 0 6px 16px;
+  
 `
 const RemoteControlTitle = styled.div`
   font-size: 22px;

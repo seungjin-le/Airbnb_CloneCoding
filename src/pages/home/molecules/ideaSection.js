@@ -45,11 +45,13 @@ const SectionBox = styled.div`
   
 `
 const Section = styled(PaddingBox)`
+  margin: 0 auto;
 `
 const Title = styled(SectionTitle)`
   
 `
 const RecommendationBox = styled.div`
+  
   display: flex;
   flex-direction: row;
   align-items: center;

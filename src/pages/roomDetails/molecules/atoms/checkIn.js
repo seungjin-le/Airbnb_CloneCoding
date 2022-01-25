@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import moment from 'moment'
 import {AiOutlineLeft,AiOutlineRight} from 'react-icons/ai'
 import {BsKeyboard} from 'react-icons/bs'
@@ -11,10 +11,16 @@ const CheckIn = () => {
   const firstWeek = today.clone().startOf('month').week();
   const lastWeek = today.clone().endOf('month').week() === 1 ? 53 : today.clone().endOf('month').week();
   const arr =['월','화','수','목','금','토','일'];
+  //useEffect(() => {
+  //     const nav = document.getElementById('towBox');
+  //     const navs = nav.getBoundingClientRect()
+  //     console.log(navs)
+  //   }, []);
   const calendarArr=(a)=>{
 
     let result = [];
     let week = firstWeek;
+
     for ( week; week <= lastWeek; week++) {
       result = result.concat(
         <tr key={week}>
@@ -57,7 +63,7 @@ const CheckIn = () => {
         <MomentTitle>체크인 날짜를 선택해 주세요</MomentTitle>
         <MomentSubTitle>여행 날짜를 입력하여 정확한 요금을 확인하세요</MomentSubTitle>
       </MomentTitleBox>
-      <div className='towBox'>
+      <div className='towBox' >
         <div className='one'>
           <MomentMoveBtn>
             <button onClick={()=>{ setMoment(getMoment.clone().subtract(1, 'month'))}} className='moveBtn'>
@@ -68,7 +74,7 @@ const CheckIn = () => {
               <AiOutlineRight />
             </button>
           </MomentMoveBtn>
-          <MomentTable>
+          <MomentTable id='towBox'>
             {arr.map((v,i) =>
               <td key={i}>{v}</td>
             )}
@@ -77,7 +83,6 @@ const CheckIn = () => {
             </tbody>
           </MomentTable>
         </div>
-
       </div>
       <Clear>
         <BsKeyboard />

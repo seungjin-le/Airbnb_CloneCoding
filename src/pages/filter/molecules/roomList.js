@@ -13,19 +13,19 @@ const RoomList = ({searchUrl}) => {
 
 
 
-  useEffect(() => {
-    token = JSON.parse(localStorage.getItem("users"));
-  }, []);
-  useEffect(() => {
-    if(token){
-      axios.get(`https://dev.nada-risingcamp.shop/rooms?location=${searchUrl}&token=${token}`)
-        .then(res => setRoomData(res.data.result))
-        .catch(err => console.log(err))
-    }
-  },[token])
-  useEffect(() => {
-    console.log(roomData)
-  },[roomData])
+  //useEffect(() => {
+  //     token = JSON.parse(localStorage.getItem("users"));
+  //   }, []);
+  //   useEffect(() => {
+  //     if(token){
+  //       axios.get(`https://dev.nada-risingcamp.shop/rooms?location=${searchUrl}&token=${token}`)
+  //         .then(res => setRoomData(res.data.result))
+  //         .catch(err => console.log(err))
+  //     }
+  //   },[token])
+  //   useEffect(() => {
+  //     console.log(roomData)
+  //   },[roomData])
 
 
   return(
@@ -36,10 +36,13 @@ const RoomList = ({searchUrl}) => {
         <ExplainText>예약하기 전에 코로나19 관련 여행제한 사항을 확인하세요. <Link>자세히 알아보기</Link></ExplainText>
         <ItemBox>
           <ListPagNumBox>
-            { roomData ? roomData.roomList.map((v,i) => (
-              <RoomListItem key={i} roomData={v} />
-              )) :
-            false}
+            <RoomListItem />
+            <RoomListItem />
+            <RoomListItem />
+            <RoomListItem />
+            <RoomListItem />
+            <RoomListItem />
+            <RoomListItem />
             <PageNumBtnBox>
               <PageMoveBtn />
             </PageNumBtnBox>

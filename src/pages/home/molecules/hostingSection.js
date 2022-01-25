@@ -23,15 +23,17 @@ const HostingSection = () => {
 
 const SectionBox = styled.div`
   padding: 0 0 48px;
+  
 `
 const Section = styled(PaddingBox)`
+  margin: 0 auto;
   position: relative;
   width: 100%;
   height: 44.2vw;
   border-radius: 10px;
   @media screen and (max-width: 1127px){
     padding:0;
-    border-radius: 0px;
+    border-radius: 0;
   }
 `
 const SectionImgBox = styled.div`

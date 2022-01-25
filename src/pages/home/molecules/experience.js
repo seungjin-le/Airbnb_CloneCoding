@@ -25,8 +25,10 @@ const Experience = () => {
 
 const SectionBox = styled.div`
   padding: 48px 0 96px;
+  
 `
 const Section = styled(PaddingBox)`
+  margin: 0 auto;
 `
 const Title = styled(SectionTitle)`
 `

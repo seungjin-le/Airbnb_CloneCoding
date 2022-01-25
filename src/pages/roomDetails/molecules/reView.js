@@ -7,28 +7,27 @@ import axios from 'axios'
 const ReView = ({id}) => {
 
   const [loding, setLoding] = useState(false);
-  const [review, setReview] = useState();
-  const [reviews, setReviews] = useState();
-  const [reviewText, setReviewText] = useState();
-
-  useEffect(() => {
-    if(review) {
-      setReviewText(review.reviewGrades[0]);
-      setReviews( review.reviews)
-    }
-  }, [review]);
-  useEffect(() => {
-    if (id) {
-      axios.get(`https://dev.nada-risingcamp.shop/rooms/${id}/reviews`)
-        .then(res => setReview(res.data.result))
-        .catch((err) => console.log(err)).catch(err => console.log(err))
-        console.log(review)
-    }
-  }, [id]);
-  setTimeout(() => {
-    setLoding(true);
-  }, 1500)
-
+  //const [review, setReview] = useState();
+  //   const [reviews, setReviews] = useState();
+  //   const [reviewText, setReviewText] = useState();
+  //
+  //   useEffect(() => {
+  //     if(review) {
+  //       setReviewText(review.reviewGrades[0]);
+  //       setReviews( review.reviews)
+  //     }
+  //   }, [review]);
+  //   useEffect(() => {
+  //     if (id) {
+  //       axios.get(`https://dev.nada-risingcamp.shop/rooms/${id}/reviews`)
+  //         .then(res => setReview(res.data.result))
+  //         .catch((err) => console.log(err)).catch(err => console.log(err))
+  //         console.log(review)
+  //     }
+  //   }, [id]);
+  //   setTimeout(() => {
+  //     setLoding(true);
+  //   }, 1500)
 
 
   return (
@@ -39,40 +38,36 @@ const ReView = ({id}) => {
         <span>.</span>
         <div>후기 114개</div>
       </ReviewTitle>
-      {loding ?
         <ScoreBox>
         <Score>
           <ScoreItem>
             <div>청결도</div>
-            <div className='lineBox'><hr/>{reviewText.accuracyGrade}</div>
+            <div className='lineBox'><hr/>4.6</div>
           </ScoreItem>
           <ScoreItem>
             <div>의사소통</div>
-            <div className='lineBox'><hr/> {reviewText.bestValueGrade}</div>
+            <div className='lineBox'><hr/> 4.6</div>
           </ScoreItem>
           <ScoreItem>
             <div>체크인</div>
-            <div className='lineBox'><hr/> {reviewText.checkInGrade}</div>
+            <div className='lineBox'><hr/> 4.6</div>
           </ScoreItem>
         </Score>
         <Score>
           <ScoreItem>
             <div>정확성</div>
-            <div className='lineBox'><hr/>{reviewText.cleanlinessGrade}</div>
+            <div className='lineBox'><hr/>4.6</div>
           </ScoreItem>
           <ScoreItem>
             <div>위치</div>
-            <div className='lineBox'><hr/>{reviewText.communicationGrade}</div>
+            <div className='lineBox'><hr/>4.6</div>
           </ScoreItem>
           <ScoreItem>
             <div>가격 대비 만족도</div>
-            <div className='lineBox'><hr/>{reviewText.locationGrade}</div>
+            <div className='lineBox'><hr/>4.6</div>
           </ScoreItem>
         </Score>
-      </ScoreBox> :
-      <div></div>
-      }
-      {loding ?
+      </ScoreBox>
         <FlexBox className='comments'>
           <CommentsFlexBox>
             <ReViewBox>
@@ -82,12 +77,13 @@ const ReView = ({id}) => {
                        alt=""/>
                 </ReviewUserImg>
                 <div className='user'>
-                  <div className='userNickName'>{reviews[0].name}</div>
-                  <div className='day'>{reviews[0].userCreatedAt}</div>
+                  <div className='userNickName'>Chan</div>
+                  <div className='day'>2022년 1월</div>
                 </div>
               </UserBox>
               <CommentsBox>
-                {reviews[0].contents}
+                수건이 약간 아쉬웠지만 <br/>
+                그외 깔끔하고 잘지내다 갑니다
               </CommentsBox>
             </ReViewBox>
             <ReViewBox>
@@ -97,12 +93,13 @@ const ReView = ({id}) => {
                        alt=""/>
                 </ReviewUserImg>
                 <div className='user'>
-                  <div className='userNickName'>{reviews[1].name}</div>
-                  <div className='day'>{reviews[1].userCreatedAt}</div>
+                  <div className='userNickName'>Chan</div>
+                  <div className='day'>2022년 1월</div>
                 </div>
               </UserBox>
               <CommentsBox>
-                {reviews[1].contents}
+                수건이 약간 아쉬웠지만 <br/>
+                그외 깔끔하고 잘지내다 갑니다
               </CommentsBox>
             </ReViewBox>
             <ReViewBox>
@@ -112,12 +109,13 @@ const ReView = ({id}) => {
                        alt=""/>
                 </ReviewUserImg>
                 <div className='user'>
-                  <div className='userNickName'>{reviews[2].name}</div>
-                  <div className='day'>{reviews[2].userCreatedAt}</div>
+                  <div className='userNickName'>Chan</div>
+                  <div className='day'>2022년 1월</div>
                 </div>
               </UserBox>
               <CommentsBox>
-                {reviews[2].contents}
+                수건이 약간 아쉬웠지만 <br/>
+                그외 깔끔하고 잘지내다 갑니다
               </CommentsBox>
             </ReViewBox>
           </CommentsFlexBox>
@@ -129,12 +127,13 @@ const ReView = ({id}) => {
                        alt=""/>
                 </ReviewUserImg>
                 <div className='user'>
-                  <div className='userNickName'>{reviews[3].name}</div>
-                  <div className='day'>{reviews[3].userCreatedAt}</div>
+                  <div className='userNickName'>Chan</div>
+                  <div className='day'>2022년 1월</div>
                 </div>
               </UserBox>
               <CommentsBox>
-                {reviews[3].contents}
+                수건이 약간 아쉬웠지만 <br/>
+                그외 깔끔하고 잘지내다 갑니다
               </CommentsBox>
             </ReViewBox>
             <ReViewBox>
@@ -168,15 +167,10 @@ const ReView = ({id}) => {
               </CommentsBox>
             </ReViewBox>
           </CommentsFlexBox>
-        </FlexBox> : <div></div>
-      }
-      {loding ?
+        </FlexBox>
         <ReviewBtn>
           <span>후기 144개 모두 보기</span>
-        </ReviewBtn> :
-        <div></div>
-      }
-
+        </ReviewBtn>
     </FlexBox>
   )
 }
@@ -191,6 +185,13 @@ const FlexBox = styled.div`
   &.comments{
     padding:0;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    @media screen and (max-width: 1127px) {
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+    }
   }
 `
 const ReviewTitle = styled.div`
@@ -251,11 +252,13 @@ const ScoreItem = styled.div`
 
 const ReViewBox = styled.div`
   width: 75%;
+  height: 124px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
   margin-bottom: 40px;
+  box-sizing: border-box;
 `
 const UserBox = styled.div`
   display: flex;
@@ -287,11 +290,20 @@ const ReviewUserImg = styled.div`
   
 `
 const CommentsBox = styled.div`
+  width: 100%;
+  text-align: left;
+  height: 100%;
+  white-space:normal;
 `
 const CommentsFlexBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 50%;
+  margin-top: 10px;
+  align-items: start;
+  justify-content: space-between;
+  box-sizing: border-box;
+  
 `
 
 const ReviewBtn = styled.div`
@@ -299,7 +311,6 @@ const ReviewBtn = styled.div`
     border-radius: 10px;
     border-width: 1px;
     border-style: solid;
-    padding: 14px 24px;
     padding: 13px 23px;
     cursor: pointer;
     &:hover{

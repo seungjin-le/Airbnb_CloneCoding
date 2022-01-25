@@ -80,11 +80,11 @@ const TitleBox = styled.div`
 `
 const AmenitiesIconBox = styled.div`
   width: 100%;
-  
+  display: flex;
+  flex-wrap: wrap;
   
 `
 const AmenitiesIconItem = styled.div`
-  display: inline-flex;
   flex-direction: row;
   align-items: center;
   width: 50%;

@@ -4,65 +4,47 @@ import {RiStarSFill} from 'react-icons/ri'
 import {Link} from 'react-router-dom'
 
 const RoomListItem = ({roomData}) => {
-  console.log(roomData)
 
 
-  const moveDetailsPage = () => {
-    setTimeout(() => {
-      let DetailsPage ='/roomDetails/'+roomData.roomId
-      window.location.href= `${DetailsPage}`
-    },1000)
-  }
+  //const moveDetailsPage = () => {
+  //     setTimeout(() => {
+  //       let DetailsPage ='/roomDetails/'+roomData.roomId
+  //       window.location.href= `${DetailsPage}`
+  //     },1000)
+  //   }
 
   return (
     <ItemBox>
       <ImgBox>
-        <Link to={'#'} onClick={moveDetailsPage}>
+        <Link to={'/roomDetails'}>
           <SuperHostBtn>슈퍼호스트</SuperHostBtn>
           <img src="https://a0.muscache.com/im/pictures/2ae45f5d-0c2e-4af9-af97-c4aa4d388e89.jpg?im_w=720" alt=""/>
         </Link>
       </ImgBox>
       <TextBox>
-        <Link to={'#'} onClick={moveDetailsPage}>
-          {roomData ?
+        <Link to={'/roomDetails'}>
             <div className='box'>
               <TitleBox>
                 <Title>
-                  <div>{roomData.location} {roomData.type}</div>
-                  <div>{roomData.title}</div>
+                  <div>Oncheon 1(il)-dong, Yuseong-gu의 공동 주택 전체</div>
+                  <div>[유성온천역 3분] 더 팰리스1 - 프리미엄 에어비엔비 the Palace primium</div>
                 </Title>
                 <IconBox>
                   <IoMdHeartEmpty/>
                 </IconBox>
               </TitleBox>
               <span className='line'/>
-              <SubText>최대 인원 {roomData.maxPeople}명 · 침대 {roomData.bedroomNum}개 · 욕실 {roomData.bathroomNum}개</SubText>
-              <SubText>{roomData.amenities}</SubText>
-            </div> :
-            <div className='box'>
-              <TitleBox>
-                <Title>
-                  <div>{roomData.location} {roomData.type}</div>
-                  <div>{roomData.title}</div>
-                </Title>
-                <IconBox>
-                  <IoMdHeartEmpty/>
-                </IconBox>
-              </TitleBox>
-              <span className='line'/>
-              <SubText>최대 인원 {roomData.maxPeople}명 · 침대 {roomData.bedroomNum}개 · 욕실 {roomData.bathroomNum}개</SubText>
-              <SubText>{roomData.amenities}</SubText>
+              <SubText>최대 인원 2명 · 침대 1개 · 욕실 1개</SubText>
+              <SubText>주방 . 무료 주차 공간 . 무선 인터넷 . 난방</SubText>
             </div>
-          }
         </Link>
-        {roomData ?
         <RatingsBox>
-          <Link to={'#'} onClick={moveDetailsPage}>
+          <Link to={'/roomDetails'}>
           <RiStarSFill />
-          <RatingsNum>{roomData.reviewGrade}</RatingsNum>
-          <RatingsText>(후기 {roomData.reviewCount}개)</RatingsText>
+          <RatingsNum>4.90</RatingsNum>
+          <RatingsText>(후기 121개)</RatingsText>
           </Link>
-        </RatingsBox> : false}
+        </RatingsBox>
       </TextBox>
     </ItemBox>
   )
@@ -76,6 +58,9 @@ const ItemBox = styled.div`
   flex-direction: row;
   position: relative;
   box-sizing: border-box;
+  & a {
+    text-decoration: none;
+  }
 `
 const ImgBox = styled.div`
   width: 300px;

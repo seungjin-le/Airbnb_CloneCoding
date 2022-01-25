@@ -13,35 +13,35 @@ const Details = () => {
   const [userToken, setUserToken] = useState();
   let roomImg;
 
-  let pageUrl = window.location.href.split('http://localhost:3000/roomDetails/');
-  pageUrl.shift()
-  let url = decodeURI(pageUrl);
-  useEffect(() => {
-    setData(JSON.parse(localStorage.getItem("users")));
-  }, [])
-  useEffect(() => {
-    if (data) {
-    axios.get(`https://dev.nada-risingcamp.shop/rooms/${url}/contents?token=${data}`)
-      .then(res => setUserToken(res.data.result))
-      .catch((err) => console.log(err)).catch(err => console.log(err))
-         }
-  }, [data]);
-  useEffect(() => {
-    if(userToken){
-      roomImg =userToken.roomImages;
-      console.log(roomImg)
-    }
-    console.log(userToken)
-  }, [userToken])
+  //let pageUrl = window.location.href.split('http://localhost:3000/roomDetails/');
+  //   pageUrl.shift()
+  //   let url = decodeURI(pageUrl);
+  //   useEffect(() => {
+  //     setData(JSON.parse(localStorage.getItem("users")));
+  //   }, [])
+  //   useEffect(() => {
+  //     if (data) {
+  //     axios.get(`https://dev.nada-risingcamp.shop/rooms/${url}/contents?token=${data}`)
+  //       .then(res => setUserToken(res.data.result))
+  //       .catch((err) => console.log(err)).catch(err => console.log(err))
+  //          }
+  //   }, [data]);
+  //   useEffect(() => {
+  //     if(userToken){
+  //       roomImg =userToken.roomImages;
+  //       console.log(roomImg)
+  //     }
+  //     console.log(userToken)
+  //   }, [userToken])
 
 
 
   return (
     <DetailsPaddingBox>
-      <DetailsTitle data={data} id={url}/>
-      <DetailsImg data={data} id={url}/>
-      <Announcement data={data} id={url}/>
-      <ReView id={url}/>
+      <DetailsTitle/>
+      <DetailsImg/>
+      <Announcement/>
+      <ReView/>
       <HostPosition />
     </DetailsPaddingBox>
   )
