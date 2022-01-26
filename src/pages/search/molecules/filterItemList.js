@@ -26,7 +26,7 @@ const FilterItemList = () => {
                 {like ?
                   <IoIosHeart className={'like'} onClick={likeToggle}/> :
                   <IoIosHeartEmpty onClick={likeToggle}/>}
-                <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+                <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'/>
               </ItemImg>
               <LodgingTextBox>
                 <LodgingTitleBox>
@@ -44,7 +44,7 @@ const FilterItemList = () => {
                 {like ?
                   <IoIosHeart className={'like'} onClick={likeToggle}/> :
                   <IoIosHeartEmpty onClick={likeToggle}/>}
-                <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+                <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'/>
               </ItemImg>
               <LodgingTextBox>
                 <LodgingTitleBox>
@@ -62,7 +62,7 @@ const FilterItemList = () => {
                 {like ?
                   <IoIosHeart className={'like'} onClick={likeToggle}/> :
                   <IoIosHeartEmpty onClick={likeToggle}/>}
-                <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+                <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'/>
               </ItemImg>
               <LodgingTextBox>
                 <LodgingTitleBox>
@@ -80,7 +80,7 @@ const FilterItemList = () => {
                 {like ?
                   <IoIosHeart className={'like'} onClick={likeToggle}/> :
                   <IoIosHeartEmpty onClick={likeToggle}/>}
-                <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'></Img>
+                <Img src='https://a0.muscache.com/im/pictures/03b6cb80-e1a3-43c6-8a7a-a04e7205caa5.jpg?im_w=720'/>
               </ItemImg>
               <LodgingTextBox>
                 <LodgingTitleBox>

@@ -8,6 +8,24 @@ import Pagination from './atoms/pagination'
 const RoomList = ({searchUrl}) => {
   const [roomData, setRoomData] = useState();
   let token;
+  const positions = [
+    {
+      Latitude:33.450701,
+      Longitude:126.570667
+    },{
+      Latitude:33.44921716022538,
+      Longitude:126.5718300897633
+    },{
+      Latitude:33.45021779229322,
+      Longitude:126.57704153271797
+    },{
+      Latitude:33.45089012516969,
+      Longitude:126.57590894518651
+    },{
+      Latitude:33.44893147286681,
+      Longitude:126.57527316462217
+    }
+  ]
   const [posts, setPosts] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
@@ -41,7 +59,7 @@ const RoomList = ({searchUrl}) => {
         <ItemBox>
           <ListPagNumBox>
             {posts.slice(offset, offset + limit).map(({ id, title, body }) => (
-              <RoomListItem title={title}/>
+              <RoomListItem title={title} positions={positions}/>
             ))}
             <footer>
               <Pagination
@@ -57,7 +75,7 @@ const RoomList = ({searchUrl}) => {
         </ItemBox>
       </ListBox>
       <MapBox>
-        <KakaoMap />
+        <KakaoMap positions={positions}/>
       </MapBox>
     </RoomListBox>
   )

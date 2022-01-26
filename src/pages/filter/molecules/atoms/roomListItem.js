@@ -4,8 +4,7 @@ import {RiStarSFill} from 'react-icons/ri'
 import {Link} from 'react-router-dom'
 
 
-const RoomListItem = ({title}) => {
-  console.log(title)
+const RoomListItem = ({title ,positions}) => {
   //const moveDetailsPage = () => {
   //     setTimeout(() => {
   //       let DetailsPage ='/roomDetails/'+roomData.roomId
@@ -16,7 +15,7 @@ const RoomListItem = ({title}) => {
   return (
     <ItemBox>
       <ImgBox>
-        <Link to={'/roomDetails'}>
+        <Link to={`/roomDetails/Latitude=${positions[0].Latitude}/Longitude=${positions[0].Longitude}`}>
           <SuperHostBtn>슈퍼호스트</SuperHostBtn>
           <img src="https://a0.muscache.com/im/pictures/2ae45f5d-0c2e-4af9-af97-c4aa4d388e89.jpg?im_w=720" alt=""/>
         </Link>

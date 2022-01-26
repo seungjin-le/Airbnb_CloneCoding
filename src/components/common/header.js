@@ -17,13 +17,12 @@ const Header = (props) => {
   const [data, setData] = useState();
   const [loginStatus, setLoginStatus] = useState(false);
   const [userToken, setUserToken] = useState();
-
-  //useEffect(() => {
-  //     window.addEventListener('scroll', handleScroll);
-  //     return () => {
-  //       window.removeEventListener('scroll', handleScroll); //clean up
-  //     };
-  //   }, []);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  },[]);
   //   useEffect(() => {
   //     if(data){
   //       axios.get(`https://dev.nada-risingcamp.shop/users/auto-login?token=${data}`).
@@ -194,7 +193,7 @@ const HeaderPaddingBox = styled.div`
     height: 80px;
     top:0;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     background: #fff;
   }
 `

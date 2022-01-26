@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import {PageWrap} from '../../components/common/styled'
 import Header from '../../components/common/header'
 import Footer from '../../components/common/footer'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {storageService} from '../../firebase/firebase'
 import { v4 as uuidv4 } from 'uuid';
 
@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 const Hosting = () => {
   const [lextPage, setLextPage] = useState(false);
   const [attachment, setAttachment] = useState();
-
+  const [imgPage, setImgPage] = useState(false);
 
   const onFileChange = (e) => {
     const files = e.target.files
@@ -31,8 +31,37 @@ const Hosting = () => {
     const fileRef = storageService.ref().child(`imgs/${uuidv4()}`)
     const response = await fileRef.putString(attachment, 'data_url')
     console.log(response)
+    response.snapshot.ref.getDownloadURL().then((url) => {
+      console.log(url)
+    })
+    //response.on('state_changed',
+    //       null,
+    //       (error => {
+    //         console.log('실패사유',error);
+    //       },
+    //       () => {
+    //         response.snapshot.ref.getDownloadURL().then((url) => {
+    //           console.log(url)
+    //         })
+    //       }
+    //       ))
     onClearPhotClick();
+    alert('등록이 완료 되었습니다')
+
   }
+  //const onSubmit = async () => {
+  //     const fileRef = storageService.ref().child(`imgs/${uuidv4()}`);
+  //     const response = await fileRef.putString(attachment,'data_url');
+  //     console.log(await response.getDownloadURL())
+  //   }
+  //useEffect( () => {
+  //     const fileRef = storageService.ref().child(`imgs/${uuidv4()}`)
+  //     const response = fileRef.putString(attachment, 'data_url')
+  //     console.log(response)
+  //     onClearPhotClick();
+  //     alert('등록이 완료 되었습니다')
+  //   }, []);
+
   return (
     <Page>
       <Header page={'search'} filterPage={'filterPage'}/>
@@ -46,13 +75,22 @@ const Hosting = () => {
               <span>도움말</span>
               <span>저장 및 나가기</span>
             </BtnBox>
-            <InputForm>
-                <input type="file" accept="image/*" onChange={onFileChange}/>
+            {imgPage ?
+              <InputForm>
+                <div>
+                  <img src="" alt=""/>
+                </div>
+              </InputForm> :
+              <InputForm>
+                <div>
+                  <input id='file' className='file' type="file" accept="image/*" onChange={onFileChange}/>
+                </div>
                 <button onClick={onClick} >사진 등록</button>
-            </InputForm>
+              </InputForm>
+            }
             <NextBtnBox>
-              <span>뒤로</span>
-              <span>저장</span>
+              <span onClick={() => setImgPage(!imgPage)}>뒤로</span>
+              <span onClick={() => setImgPage(!imgPage)}>저장</span>
             </NextBtnBox>
           </FlexRight> :
           <FlexRight>
@@ -70,7 +108,7 @@ const Hosting = () => {
             </InputForm>
             <NextBtnBox>
               <span>뒤로</span>
-              <span onClick={() => setLextPage((lextPage) => !lextPage)}>다음</span>
+              <span onClick={() => setLextPage(!lextPage)}>다음</span>
             </NextBtnBox>
           </FlexRight>
         }
@@ -146,23 +184,41 @@ const InputForm = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   & input {
-    
     font-size: 25px;
     padding: 25px 20px;
     border-radius: 8px;
     margin-bottom: 15px;
   }
-  & input::file-selector-button { display: none; }
+
+  & input::file-selector-button {
+    display: none;
+  }
+  & input::file-selector-button{ 
+    font-size: 100px;
+  }
   & .text {
     width: 100%;
   }
-  & button{
+
+  & .file {
+    border: 1px solid #222;
+    width: 200px;
+    height: 250px;
+    margin: 0 20px 60px;
+    box-sizing: border-box;
+  }
+
+  & button {
     text-align: center;
     display: inline-block;
-    width: 100px;
+    border: none;
+    background: #222;
+    color: #fff;
     border-radius: 10px;
     padding: 10px 20px;
+    font-size: 24px;
   }
 `
 const FlexRight = styled.div`

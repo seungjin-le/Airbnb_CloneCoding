@@ -1,12 +1,21 @@
 import styled from 'styled-components';
 import KakaoMap from '../../../../components/common/atoms/kakaoMap'
+import {useState} from 'react'
 
 const HostPosition = () => {
+  let pageUrl = window.location.href.split('http://localhost:3000/roomDetails/').join().substr(1);
+  let url = pageUrl.split('/')
+  const [latitude, setLatitude] = useState(url[0].split('=')[1]);
+  const [longitude, setLongitude] = useState(url[1].split('=')[1]);
+  let positions ={
+    latitude:latitude,
+    longitude:longitude
+  }
   return (
     <FlexBox>
       <HostTitle>호스팅 지역</HostTitle>
       <KakaoMapBox>
-        <KakaoMap />
+        <KakaoMap positions={positions}/>
       </KakaoMapBox>
       <HostTextBox>
         <div>Oncheon 1(il)-dong, Yuseong-gu, 대전(Daejeon), 한국</div>
