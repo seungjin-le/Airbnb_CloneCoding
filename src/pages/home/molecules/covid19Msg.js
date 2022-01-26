@@ -12,7 +12,9 @@ const Covid19Msg = () => {
 const MsgBox = styled(PaddingBox)`
   padding-top: 16px;
   padding-bottom: 16px;
-  
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
 `
 const MsgText = styled.div`
   width: 100%;
@@ -22,6 +24,7 @@ const MsgText = styled.div`
   text-decoration: underline;
   font-weight: 600;
   color: #fff;
+  
   & a:hover{
     color: #ddd;
   }

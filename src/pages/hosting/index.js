@@ -8,11 +8,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 
+
 const Hosting = () => {
   const [lextPage, setLextPage] = useState(false);
   const [attachment, setAttachment] = useState();
   const [imgPage, setImgPage] = useState(false);
-
+  const [imgUrl, setImgUrl] = useState();
+  let data;
   const onFileChange = (e) => {
     const files = e.target.files
     const theFile = files[0];
@@ -31,9 +33,8 @@ const Hosting = () => {
     const fileRef = storageService.ref().child(`imgs/${uuidv4()}`)
     const response = await fileRef.putString(attachment, 'data_url')
     console.log(response)
-    response.snapshot.ref.getDownloadURL().then((url) => {
-      console.log(url)
-    })
+    setImgUrl(await response.ref.getDownloadURL());
+    console.log(imgUrl)
     //response.on('state_changed',
     //       null,
     //       (error => {
@@ -78,7 +79,7 @@ const Hosting = () => {
             {imgPage ?
               <InputForm>
                 <div>
-                  <img src="" alt=""/>
+                  {imgUrl ? <img src={imgUrl} alt=""/> : <div />}
                 </div>
               </InputForm> :
               <InputForm>
@@ -184,7 +185,12 @@ const InputForm = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  & img{
+    width: 400px;
+    height: 300px;
+    border: 1px solid #222;
+    border-radius: 10px;
+  }
   & input {
     font-size: 25px;
     padding: 25px 20px;

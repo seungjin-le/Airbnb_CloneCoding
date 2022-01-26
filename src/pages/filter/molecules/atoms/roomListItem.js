@@ -11,7 +11,7 @@ const RoomListItem = ({title ,positions}) => {
   //       window.location.href= `${DetailsPage}`
   //     },1000)
   //   }
-
+  console.log(positions[0].Latitude,positions[0].Longitude)
   return (
     <ItemBox>
       <ImgBox>

@@ -12,6 +12,7 @@ const KakaoMap = ({positions}) => {
       level: 3
     };
     let map = new kakao.maps.Map(container, options);
+    console.log(positions)
     if(Array.isArray(positions)){
       positions.map((v,i) => {
         let markerPosition  = new kakao.maps.LatLng(v.Latitude, v.Longitude);
@@ -22,12 +23,14 @@ const KakaoMap = ({positions}) => {
         console.log('ttet')
       })
     }else if(typeof positions === 'object'){
-      console.log(positions.latitude, positions.longitude)
-      let markerPosition  = new kakao.maps.LatLng(positions.latitude, positions.longitude);
-      let marker = new kakao.maps.Marker({
-        position: markerPosition
-      });
-      marker.setMap(map);
+      setTimeout(() => {
+        console.log(positions.latitude, positions.longitude)
+        let markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667);
+        let marker = new kakao.maps.Marker({
+          position: markerPosition
+        });
+        marker.setMap(map);
+      },1500)
     }
   }, [])
 
